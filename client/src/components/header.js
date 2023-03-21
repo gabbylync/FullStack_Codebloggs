@@ -60,7 +60,6 @@ export default function Header() {
               Logout
             </NavDropdown.Item>
           </NavDropdown>
-          {/* <ToastContainer /> */}
         </Container>
       </Navbar>
     </div>

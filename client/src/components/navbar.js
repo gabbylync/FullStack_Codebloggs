@@ -40,9 +40,11 @@ export default function Navbars() {
   // const token = (getCookie('token'));
   return (
     <div
-      style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
+      // style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
     >
-      <CDBSidebar className= "navigation" backgroundColor="#9575CD">
+      <CDBSidebar className= "navigation" backgroundColor="#9575CD"
+      style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
+      >
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
            <img
               src={'https://i.ibb.co/dLBWqJG/codebloggs-logo2-removebg-preview.png'}

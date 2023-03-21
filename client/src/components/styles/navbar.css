@@ -5,7 +5,8 @@
   margin: 0;
   padding: 0;
   width: 25%;
-  position: fixed;
+  /* position: fixed; */
+  float: left;
   height: 100%;
   /* overflow: auto; */
   }
