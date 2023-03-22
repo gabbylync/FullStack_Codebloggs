@@ -162,12 +162,12 @@ function Login() {
 
 
   return (
-    <div className='main'>
+    // <div className='main'>
     <MDBContainer className=" my-4 gradient-form align-items-stretch">
 
       <MDBRow>
 
-        <MDBCol col='6' className="mb-5">
+        <MDBCol col='6' className="loginleft">
           <div className="flex flex-column ms-5">
 
             <div className="text-center">
@@ -216,7 +216,7 @@ function Login() {
       </MDBRow>
 
     </MDBContainer>
-    </div>
+    // </div>
   );
 }
 

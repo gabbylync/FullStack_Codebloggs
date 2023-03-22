@@ -22,3 +22,20 @@
     }
   }
   
+  .loginleft{
+    margin: 100px 10px 100px 0px;
+  }
+
+/* these are sectioned off because they belong to the home page
+they wouldn't change color on home.css for some reason*/
+.firstname{
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
+  text-align: center;
+}
+.commentlist{
+  text-align: center;
+  color: white;
+  background: linear-gradient(to right, #7544b1, #5911b0, #9570c2, #37016d);
+}
+/* //////////////////////////////////////////////////////////////////////// */
