@@ -12,6 +12,7 @@
     "mdbreact": "^5.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^1.6.6",
+    "react-date-picker": "^9.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-router-dom": "^6.9.0",

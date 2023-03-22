@@ -5,8 +5,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
 // import { ToastContainer, toast } from "react-toastify";
 import toast, { Toaster } from "react-hot-toast";
+import CreatepostModal from "./modals/CreatepostModal";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -17,16 +19,15 @@ export default function Header() {
     //   setCookie('token', '0')
     setisLoggedIn(false);
   };
-  const handleToastClick = () => toast('Success Link Clicked', {
-    icon: '👏',
-    style: {
-      borderRadius: '10px',
-      background: '#333',
-      color: '#fff',
-    },
-  }
-);
-
+  const handleToastClick = () =>
+    toast("Success Link Clicked", {
+      icon: "👏",
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
 
   // const token = (getCookie('token'));
   return (
@@ -49,8 +50,11 @@ export default function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"> </span>
           </button>
+          <h1> </h1>
+         {/* insert CodeBloggs header in h1 above w/ cool font */}
+        <CreatepostModal />
           <NavDropdown title="Menu" id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3" onClick={handleToastClick}>
               Account Settings

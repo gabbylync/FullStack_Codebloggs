@@ -11,6 +11,7 @@ import Register from "./components/register/register"
 import Bloggs from "./components/bloggs/bloggs"
 import Network from "./components/network/network"
 import Admin from "./components/admin/admin"
+import Login from "./components/login/login"
 
 
 function App() {
@@ -19,11 +20,13 @@ function App() {
   <Header />
      <Navbars />
      <Routes>
-     <Route path="/" element={<Home />} />
+     <Route path="/home" element={<Home />} />
      <Route path="/register" element={<Register />} />
+     <Route path="/" element={<Login />} />
      <Route path="/bloggs" element={<Bloggs />} />
      <Route path="/network" element={<Network />} />
      <Route path="/admin" element={<Admin />} />
+
      </Routes>
    </div>
 
