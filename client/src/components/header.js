@@ -35,7 +35,7 @@ export default function Header() {
       <Toaster position="top-center" reverseOrder={false} />
       <Navbar>
         <Container>
-          <NavLink className="navbar-brand" to="/login">
+          <NavLink className="navbar-brand" to="/">
             <img
               style={{ width: 40 + "%" }}
               src="https://cdn5.dcbstatic.com/files/c/o/codeboxx_docebosaas_com/userfiles/13037/codebloggs_logo2.png"

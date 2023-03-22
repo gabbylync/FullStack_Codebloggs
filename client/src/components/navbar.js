@@ -55,7 +55,7 @@ export default function Navbars() {
         </CDBSidebarHeader>
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink  to="/" className="activeClicked">
+            <NavLink  to="/home" className="activeClicked">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
             <NavLink to="/bloggs" className="activeClicked">

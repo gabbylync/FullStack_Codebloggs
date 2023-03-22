@@ -2,8 +2,13 @@
 
 .gradient-custom-2 {
     background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
-    padding: 10px;
+    /* padding: 10px; */
   }
+
+.gradient-custom-3{
+  background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
+  /* padding: 10px; */
+}
   
   @media (min-width: 768px) {
     .gradient-form {

@@ -25,8 +25,7 @@ function CreatepostModal(props) {
       <MypostModal
         show={showModal}
         handleClose={handleClose}
-        title="Hold up"
-        body="Are you sure you want to post this?"
+        title="Post something!"
         handleSave={handleSave}
       />
     </div>

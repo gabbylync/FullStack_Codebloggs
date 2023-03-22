@@ -168,14 +168,14 @@ function Login() {
       <MDBRow>
 
         <MDBCol col='6' className="mb-5">
-          <div className="flex flex-column ms-6">
+          <div className="flex flex-column ms-5">
 
             <div className="text-center">
               <img src="https://i.ibb.co/RBbJS4p/Code-Bloggs-graphic.png"
                 style={{width: '100px' }} alt="logo" />
               <br/>
               <br/>
-              <h4 className="mt-1 mb-5 pb-1">We are Codebloggs</h4>
+              <h4 className="mt-1 mb-5 pb-1">Welcome back Codebloggers</h4>
             </div>
 
             <p className ="text-center" >Please login to your account</p>
@@ -185,7 +185,7 @@ function Login() {
             <MDBInput wrapperClass='mb-4' label='Email address'  onChange={    ("email")} id='form1' type='email'/>
                                                                                           {/* handleChange in onChange space above  */}
             <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
-
+            <MDBBtn className="mb-4 w-100 gradient-custom-3" href="/home" >Sign in</MDBBtn>
 
   
 

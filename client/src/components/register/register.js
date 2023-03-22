@@ -108,7 +108,7 @@ function Register() {
               </MDBCol>
            
             <MDBCol col="6">
-            <MDBBtn className="" class="btn btn-outline-dark btn-lg">
+            <MDBBtn className=""  href="/" class="btn btn-outline-dark btn-lg">
               Sign Up
             </MDBBtn>
             </MDBCol>
