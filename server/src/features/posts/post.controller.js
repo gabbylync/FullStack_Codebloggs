@@ -1,6 +1,5 @@
 const Post = require("../../shared/DB/schemas/post.schema");
 
-
 const postCreate = async (req, res) => {
   try {
     const post = await Post.create(req.body);
@@ -23,24 +22,26 @@ const getPostById = async (req, res) => {
 
 const postByUserId = async (req, res) => {
   try {
-    const posts = await Post.find({ user: req.params.id }).select('content');
+    const posts = await Post.find({ user: req.params.id }).select("content");
     console.log(posts);
     res.send(posts);
   } catch (error) {
     res.status(500).json({ error: err });
   }
-
 };
-
 
 const postUpdate = async (req, res) => {
   try {
     // const allowed = filterUpdates(req.body);
-    
-    const post = await Post.findByIdAndUpdate({ _id: req.params.id }, req.body, {
-      new: true,
-      upsert: false,
-    });
+
+    const post = await Post.findByIdAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      {
+        new: true,
+        upsert: false,
+      }
+    );
     if (post) {
       res.status(200).json({ data: post });
     } else {
@@ -57,7 +58,7 @@ const postUpdate = async (req, res) => {
 const postDelete = async (req, res) => {
   try {
     const deletePost = await Post.findByIdAndDelete(req.params.id);
-    console.log(deletePost)
+    console.log(deletePost);
     if (!deletePost) res.status(404).send("No post found");
     res.status(200).send("Post deleted");
   } catch (error) {
@@ -65,4 +66,25 @@ const postDelete = async (req, res) => {
   }
 };
 
-module.exports = { postCreate, getPostById, postByUserId, postUpdate, postDelete };
+const postLike = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndUpdate(
+      { id: req.params.id },
+      { $inc: { likes: 1 } },
+      { new: true }
+    );
+    res.status(200).json({ data: post });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send({ error: error });
+  }
+};
+
+module.exports = {
+  postCreate,
+  getPostById,
+  postByUserId,
+  postUpdate,
+  postDelete,
+  postLike
+};

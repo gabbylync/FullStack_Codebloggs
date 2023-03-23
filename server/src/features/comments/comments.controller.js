@@ -1,5 +1,4 @@
 const Comment = require("../../shared/DB/schemas/comment.schema");
-const { filterUpdates } = require("../../../utilities");
 
 const commentCreate = async (req, res) => {
   try {
@@ -19,24 +18,22 @@ const commentById = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: err });
   }
-
 };
 
 const commentByUserId = async (req, res) => {
-    try {
-      const comments = await Comment.find({ user: req.params.id }).select('content');
-      console.log(comments);
-      res.send(comments);
-    } catch (error) {
-      res.status(500).json({ error: err });
-    }
-  
-  };
+  try {
+    const comments = await Comment.find({ user: req.params.id }).select(
+      "content"
+    );
+    console.log(comments);
+    res.send(comments);
+  } catch (error) {
+    res.status(500).json({ error: err });
+  }
+};
 
 const commentUpdate = async (req, res) => {
   try {
-    // const allowed = filterUpdates(req.body);
-
     const comment = await Comment.findByIdAndUpdate(
       { _id: req.params.id },
       req.body,
@@ -69,4 +66,25 @@ const commentDelete = async (req, res) => {
   }
 };
 
-module.exports = { commentCreate, commentById, commentUpdate, commentDelete, commentByUserId };
+const commentLike = async (req, res) => {
+  try {
+    const comment = await Comment.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $inc: { likes: 1 } },
+      { new: true }
+    );
+    res.status(200).json({ data: comment });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send({ error: error });
+  }
+};
+
+module.exports = {
+  commentCreate,
+  commentById,
+  commentUpdate,
+  commentDelete,
+  commentByUserId,
+  commentLike,
+};

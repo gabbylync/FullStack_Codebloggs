@@ -6,6 +6,7 @@ const registerCommentRoutes = (app) => {
     app.get('/comment-by-user/:id', CommentController.commentByUserId)
     app.patch('/comment-update/:id', CommentController.commentUpdate)
     app.delete('/comment-delete/:id', CommentController.commentDelete)
+    app.patch('/comment-like', CommentController.commentLike)
 
 
 

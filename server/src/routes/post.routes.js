@@ -7,6 +7,7 @@ const registerPostRoutes = (app) => {
     app.get('/post-by-user/:id', PostController.postByUserId)
     app.patch('/post-update/:id', PostController.postUpdate)
     app.delete('/post-delete/:id', PostController.postDelete)
+    app.patch('/post-like/:id', PostController.postLike)
 
 
 
