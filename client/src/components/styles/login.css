@@ -1,0 +1,41 @@
+
+
+.gradient-custom-2 {
+    background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
+    /* padding: 10px; */
+  }
+
+.gradient-custom-3{
+  background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
+  /* padding: 10px; */
+}
+  
+  @media (min-width: 768px) {
+    .gradient-form {
+      height: 100vh !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .gradient-custom-2 {
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+    }
+  }
+  
+  .loginleft{
+    margin: 100px 10px 100px 0px;
+  }
+
+/* these are sectioned off because they belong to the home page
+they wouldn't change color on home.css for some reason*/
+.firstname{
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
+  text-align: center;
+}
+.commentlist{
+  text-align: center;
+  color: white;
+  background: linear-gradient(to right, #7544b1, #5911b0, #9570c2, #37016d);
+}
+/* //////////////////////////////////////////////////////////////////////// */

@@ -1,0 +1,29 @@
+
+
+.homecard {
+    width: 500px;
+    margin: 65px 40px 70px 20px;
+    color: white;
+ 
+}
+
+.initals {
+    text-align: center;
+    font-size: 40px;
+    font-family: "Brush Script MT"
+
+}
+
+.status {
+    text-align: right;
+}
+
+/* .commentlist{
+    text-align: center;
+    color: white;
+    background-color: blueviolet;
+} */
+.posts{
+    color: white;
+}
+
