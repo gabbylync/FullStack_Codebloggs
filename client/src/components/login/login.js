@@ -182,8 +182,10 @@ function Login() {
 
 {/*  Have to insert component="form"   and   onSubmit={handleSubmit} into this area somwhere*/}
 {/* <Form></Form> */}
-            <MDBInput wrapperClass='mb-4' label='Email address'  onChange={    ("email")} id='form1' type='email'/>
-                                                                                          {/* handleChange in onChange space above  */}
+            <MDBInput wrapperClass='mb-4' label='Email address' 
+            //  onChange={("email")}
+              id='form1' type='email'/>
+                                                            {/* handleChange in onChange space above  */}
             <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
             <MDBBtn className="mb-4 w-100 gradient-custom-3" href="/home" >Sign in</MDBBtn>
 
