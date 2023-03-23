@@ -33,7 +33,7 @@ export default function Home() {
                 99 problems, but a bug ain't one 
               </MDBCardText>
             </MDBCardBody>
-            <MDBListGroup  flush>
+            <MDBListGroup  >
         <MDBListGroupItem className='firstname'> First Name </MDBListGroupItem>
         <MDBListGroupItem className='firstname'> Last Name </MDBListGroupItem>
         <MDBListGroupItem className='firstname'> Email </MDBListGroupItem>
@@ -54,7 +54,7 @@ export default function Home() {
               </MDBCardText>
               <LikeButton/>
             </MDBCardBody>
-            <MDBListGroup flush>
+            <MDBListGroup >
         <MDBListGroupItem>Post Date</MDBListGroupItem>
         <MDBListGroupItem className='commentlist'>Comment List</MDBListGroupItem>
         <MDBListGroupItem> ......</MDBListGroupItem>
@@ -72,7 +72,7 @@ export default function Home() {
               </MDBCardText>
               <LikeButton/>
             </MDBCardBody>
-            <MDBListGroup flush>
+            <MDBListGroup >
         <MDBListGroupItem>Post Date</MDBListGroupItem>
         <MDBListGroupItem className='commentlist'>Comment List</MDBListGroupItem>
         <MDBListGroupItem>.....</MDBListGroupItem>
@@ -89,7 +89,7 @@ export default function Home() {
               </MDBCardText>
               <LikeButton/>
             </MDBCardBody>
-            <MDBListGroup flush>
+            <MDBListGroup >
         <MDBListGroupItem>Post Date</MDBListGroupItem>
         <MDBListGroupItem className='commentlist'>Comment List </MDBListGroupItem>
         <MDBListGroupItem>.....</MDBListGroupItem>

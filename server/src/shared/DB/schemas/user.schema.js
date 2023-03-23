@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+var validator = require('validator');
+
 
 const UserSchema = new mongoose.Schema({
   first_name: {
@@ -16,13 +18,18 @@ const UserSchema = new mongoose.Schema({
 
   birthday: {
     type: Date,
-    // required: true
+    validate(val) {
+      if (!validator.isDate(val)) {
+          throw new Error(`Birthdate format is invalid. Format should be 'YYYY/MM/DD'. actual: ${val}`)
+      }
+  },
   },
   email: {
     type: String,
     trim: true,
     required: true,
-    unique: true
+    unique: true,
+    validate:[validator.isEmail, 'provide valid email']
 
   },
  password: {
@@ -48,7 +55,7 @@ const UserSchema = new mongoose.Schema({
 
  auth_level: {
     type: String,
-    // required: true
+    
  }
 
 

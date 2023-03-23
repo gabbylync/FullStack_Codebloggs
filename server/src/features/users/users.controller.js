@@ -7,6 +7,7 @@ const userRegister = async (req, res) => {
   const {
     first_name,
     last_name,
+    birthday,
     email,
     password,
     status,
@@ -21,6 +22,7 @@ const userRegister = async (req, res) => {
       const user = new User({
         first_name,
         last_name,
+        birthday,
         email,
         password,
         status,
