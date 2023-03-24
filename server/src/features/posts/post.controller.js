@@ -9,14 +9,32 @@ const postCreate = async (req, res) => {
     res.status(500).json({ msg: err });
   }
 };
+//// Get: /allPosts /////////
+const allPosts = async(req, res) => {
+  try{
+      // const postz = await Post.find({}).sort({date : -1});
+      const postz = await Post.find({}).populate('user')
+      res.status(200).send({msg: 'All post successful', data: postz})
+
+  } catch (error){
+      res.status(404).json({msg:'ERROR getting all posts'})
+      console.log(error)
+  }
+ 
+};
+
+
 
 const getPostById = async (req, res) => {
   try {
-    const postId = await Post.findOne({ post: req.query.id });
-    res.send(postId);
-    console.log(postId);
+    const { id: postID } = req.params
+    const IDpost = await Post.findById({_id: postID})
+    res.status(200).send({msg: 'Post Requested', data: IDpost})
+    // const postId = await Post.findById({ post: req.query.id });
+    // res.send(postId);
+    // console.log(postId);
   } catch (error) {
-    res.status(500).json({ error: err });
+    res.status(404).json({msg:'ERROR getting post'})
   }
 };
 
@@ -86,5 +104,6 @@ module.exports = {
   postByUserId,
   postUpdate,
   postDelete,
-  postLike
+  postLike,
+  allPosts
 };

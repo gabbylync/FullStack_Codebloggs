@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   MDBBtn,
   MDBContainer,
@@ -14,11 +14,13 @@ import { Link as RouterLink } from "react-router-dom";
 import DatePicker from "react-date-picker";
 import { useNavigate } from "react-router";
 import validator from "validator";
+import 'react-toastify/dist/ReactToastify.css';
 import { regexPassword } from "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/utils.js";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Register() {
-  const [birthday, setBirthday] = useState(new Date());
+  // const [birthday, setBirthday] = useState(new Date());
   const navigate = useNavigate();
   const [values, setValues] = useState({
     first_name: "",
@@ -107,12 +109,12 @@ function Register() {
   };
 
  
-  // useEffect(() => {
+ 
     const handleSubmit = async (event) => {
       event.preventDefault();
 
       try {
-        // const res = await fetch("register", {
+      
         const res = await fetch("http://localhost:3004/register", {
           method: "POST",
           headers: {
@@ -142,10 +144,22 @@ function Register() {
 
         const data = await res.json();
         console.log(data)
-
-        // this is just a visual feedback for user for this demo
-        // this will not be an error, rather we will show a different UI or redirect user to dashboard
-        // ideally we also want a way to confirm their email or identity
+////////////////////////////
+ /////Toasters/////
+ ///////////////////////
+//  if (res.msg === 'Agent created') {
+//   toast.success("Success: Loading Agent Info...", {position:toast.POSITION.TOP_CENTER, theme: 'colored', autoClose: 5000, onClose: ()=>{navigate("/Agentlist") }})
+// }
+if (res.msg === 'Add all data') {
+    toast.error("Error: Must add all data flieds", {position:toast.POSITION.TOP_CENTER, theme: 'dark', autoClose: 5000, onClose: ()=>{navigate("/")}})
+  
+  }
+if (res.msg === 'user already exist') {
+    toast.error("Error: User already exsists", {position:toast.POSITION.TOP_CENTER, theme: 'dark', autoClose: 5000, onClose: ()=>{navigate("/")}})
+  
+  }
+  
+ ////////////////////////////////////////////////////////
         setErrors({
           ...errors,
           fetchError: true,
@@ -156,6 +170,7 @@ function Register() {
           last_name: "",
           email: "",
           password: "",
+          status: "",
           occupation: "",
           location: "",
           birthday: "",
@@ -171,6 +186,7 @@ function Register() {
         });
       }
 
+      navigate('/')
      
     };
  
@@ -178,6 +194,7 @@ function Register() {
   return (
     // this div is centering the register page between the two nav bars with css
     <div className="register">
+    <ToastContainer/>
       <MDBContainer fluid>
         <div
           className="p-4 bg-image"
@@ -209,7 +226,7 @@ function Register() {
                   label="First name"
                   id="form1"
                   type="text"
-                  value={values.first_name}
+                  defaultValue={values.first_name}
                   onChange={handleChange("first_name")}
                   // error={errors.first_name}
                   // error={first_name ? values: undefined}
@@ -223,7 +240,7 @@ function Register() {
                   label="Last name"
                   id="form2"
                   type="text"
-                  value={values.last_name}
+                  defaultValue={values.last_name}
                   onChange={handleChange("last_name")}
                   // error={errors.last_name}
                   // helperText={errors.last_name && "Must enter last name"}
@@ -238,7 +255,7 @@ function Register() {
                   label="Email"
                   id="form3"
                   type="email"
-                  value={values.email}
+                  defaultValue={values.email}
                   onChange={handleChange("email")}
                   // error={errors.email}
                   // helperText={
@@ -253,7 +270,7 @@ function Register() {
                   label="Password"
                   id="form4"
                   type="password"
-                  value={values.password}
+                  defaultValue={values.password}
                   onChange={handleChange("password")}
                   // error={errors.password}
                   // helperText={errors.email &&
@@ -269,7 +286,7 @@ function Register() {
                   label="Occupation"
                   id="form7"
                   type="text"
-                  value={values.occupation}
+                  defaultValue={values.occupation}
                   onChange={handleChange("occupation")}
                   // error={errors.occupation}
                   // helperText={errors.occupation && "Must enter an occupation"}
@@ -282,7 +299,7 @@ function Register() {
                   label="Location"
                   id="form6"
                   type="text"
-                  value={values.location}
+                  defaultValue={values.location}
                   onChange={handleChange("location")}
                   // error={errors.location}
                  
@@ -297,7 +314,7 @@ function Register() {
                   label="birthday"
                   id="form5"
                   type="text"
-                  value={values.birthday}
+                  defaultValue={values.birthday}
                   onChange={handleChange("birthday")}
                   // error={errors.birthday}
                
@@ -305,7 +322,7 @@ function Register() {
                 {/* <DatePicker
                   onChange={(date) => setValues(birthday(date))}
                   setBirthday={setBirthday("birthday")}
-                   value={value.birthday}
+                   defaultValue={value.birthday}
                   error={errors.birthday}
                  
                 > */}
@@ -314,7 +331,7 @@ function Register() {
                   label="status"
                   id="form9"
                   type="text"
-                  value={values.status}
+                  defaultValue={values.status}
                   onChange={handleChange("status")}
                   // error={errors.birthday}
                
@@ -335,13 +352,13 @@ function Register() {
               <MDBCol col="6">
                 <MDBBtn
                   className=" btn btn-outline-dark btn-lg"
-                  href="/"
+                  
                   type="submit"
-                  // class="btn btn-outline-dark btn-lg"
                   onClick={handleSubmit}
                 >
                   Sign Up
                 </MDBBtn>
+             
               </MDBCol>
             </MDBRow>
             <br />

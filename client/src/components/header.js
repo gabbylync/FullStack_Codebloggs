@@ -9,14 +9,36 @@ import Button from "react-bootstrap/Button";
 // import { ToastContainer, toast } from "react-toastify";
 import toast, { Toaster } from "react-hot-toast";
 import CreatepostModal from "./modals/CreatepostModal";
+import { setCookie } from 'react-use-cookie';
+import { getCookie } from "react-use-cookie";
+import React, { useEffect } from "react";
+import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css'
 
 export default function Header() {
+  
+  const [email, setEmail] = useState()
+  useEffect(() => {
+  async function getEmail() {
+    const response = await fetch(
+      `http://localhost:3004/session-email/${token}`
+    );
+    const res = await response.json();
+    console.log(res)
+
+   setEmail(res.session.user.email) 
+  }
+  getEmail();
+
+  // getEmail();
+  return;
+ }, [])
+
   const navigate = useNavigate();
   const [isLoggedIn, setisLoggedIn] = useState();
 
   const logOut = () => {
-    navigate("/login");
-    //   setCookie('token', '0')
+    navigate("/");
+      setCookie('token', '0')
     setisLoggedIn(false);
   };
   const handleToastClick = () =>
@@ -29,7 +51,7 @@ export default function Header() {
       },
     });
 
-  // const token = (getCookie('token'));
+  const token = (getCookie('token'));
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
@@ -52,14 +74,14 @@ export default function Header() {
           >
             <span className="navbar-toggler-icon"> </span>
           </button>
-          <h1> </h1>
+          <h1 className = "header"> CodeBloggs </h1>
          {/* insert CodeBloggs header in h1 above w/ cool font */}
         <CreatepostModal />
           <NavDropdown title="Menu" id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3" onClick={handleToastClick}>
               Account Settings
             </NavDropdown.Item>
-
+            <li className="nav-item" >{token == 0 }   </li>
             <NavDropdown.Item href="#action4" onClick={logOut}>
               Logout
             </NavDropdown.Item>

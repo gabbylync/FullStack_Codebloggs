@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Form, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import validator from "validator";
 import useCookie from "react-use-cookie";
 import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/login.css";
@@ -15,12 +16,13 @@ import {
 } from "mdb-react-ui-kit";
 
 function Login() {
-  // const [userToken, setUserToken] = useCookie("token", "0");
+  const [userToken, setUserToken] = useCookie("token", "0");
   const navigate = useNavigate();
+  
   const [values, setValues] = useState({
     email: "",
     password: "",
-  
+  showPassword: false
   });
   const [errors, setErrors] = useState({
     email: false,
@@ -41,7 +43,6 @@ function Login() {
       }
 
       let data = await response.json();
-      // data = data.data;
       setUsers(data);
       console.log("users:", data);
     }
@@ -66,12 +67,12 @@ function Login() {
     setValues({ ...values, [fieldName]: event.target.value });
   };
 
-  // const handleShowPassword = () => {
-  //   setValues({
-  //     ...values,
-  //     showPassword: !values.showPassword,
-  //   });
-  // };
+  const handleShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -100,7 +101,10 @@ function Login() {
 
       const data = await res.json();
 
-      // setUserToken(data.session.session_token);
+      // might need data in front of the session.token
+      // setUserToken(data.Session.token);
+      setUserToken(data.Session.token);
+       console.log("userToken", userToken);
 
       setErrors({
         ...errors,
@@ -132,10 +136,6 @@ function Login() {
       userpasswordList.push(user.password);
     });
 
-    // let agentEmailList = [];
-    // agents.map((agent) => {
-    //   agentEmailList.push(agent.email);
-    // });
 
     userpasswordList.filter((password) => {
       if (password === values.password) {
@@ -147,21 +147,25 @@ function Login() {
       userEmailList.includes(values.email)&&
       foundPassword === values.password
     ) {
-      toast.success("Success: Loading Agent Info...", {
+      toast.success("Success: loading home page...", {
         position: toast.POSITION.TOP_CENTER,
-        theme: "colored",
+        theme: "dark",
         autoClose: 5000,
         onClose: () => {
           navigate("/home");
         },
       });
-    } else {
+    } else 
+    {
       toast.error("Error: Incorrect Email or Password", {
         position: toast.POSITION.TOP_CENTER,
         theme: "dark",
         autoClose: 5000,
-      });
-      navigate("/");
+        onClose: () => {
+          navigate("/");
+        },
+     });
+     
     }
   };
 
@@ -179,11 +183,10 @@ function Login() {
               />
               <br />
               <br />
-              <h4 className="mt-1 mb-5 pb-1">Welcome back Codebloggers</h4>
+              <h2 className="codeblogger">Welcome back Codeblogger</h2>
             </div>
 
             <p className="text-center">Please login to your account</p>
-
             <MDBInput
               wrapperClass="mb-4"
               label="Email address"
@@ -200,7 +203,6 @@ function Login() {
               wrapperClass="mb-4"
               label="Password"
               id="form2"
-              type={values.showPassword ? "text" : "password"}
               value={values.password}
               onChange={handleChange("password")}
               // error={errors.password}
@@ -213,13 +215,14 @@ function Login() {
             onClick={handleSubmit}>
               Sign in
             </MDBBtn>
+            <ToastContainer/>
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
               <p className="mb-0">Don't have an account?</p>
               <MDBBtn outline className="mx-2" color="dark" href="/register">
                 Register Here
               </MDBBtn>
-              <ToastContainer/>
+            
             </div>
           </div>
         </MDBCol>
@@ -227,11 +230,14 @@ function Login() {
         <MDBCol col="6" className="mb-5">
           <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4 ">
             <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-              <h1 className="mb-4">Codebloggs... </h1>
-              <h3 className="mb-0">Blog till your fingers fall off</h3>
+              <h1 className="codebloggs2">Codebloggs... </h1>
+              <br/> <br/> <br/>
+              
+              <h3 className="codebloggs3">Blog till your fingers fall off</h3>
             </div>
           </div>
         </MDBCol>
+    
       </MDBRow>
     
     </MDBContainer>

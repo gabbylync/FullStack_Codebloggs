@@ -115,3 +115,18 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Headers page CSS  */
+
+.header{
+  font-variant: small-caps;
+  color: #9d60da;
+  position: relative;
+  width: 90%;
+  bottom: 0px;
+}
+    /* part of nav bar but found in createpostModal.js */
+        .postButton{ 
+          bottom: 0px;
+          margin-right: 100px
+          }

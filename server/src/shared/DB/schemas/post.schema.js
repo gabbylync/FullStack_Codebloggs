@@ -1,17 +1,19 @@
+
+
 const mongoose = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
   content: {
     type: String,
     trim: true,
-    // required: true
+    required: true
     
   },
 
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    // required: true
+    required: true
   },
   likes: {
     type: Number, 
@@ -22,9 +24,12 @@ const PostSchema = new mongoose.Schema({
   comment: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Comment",
-  }
+  },
 
-
+date:{
+  type: Date,
+  default: Date.now
+}
   
   
 },{timestamps: true});
