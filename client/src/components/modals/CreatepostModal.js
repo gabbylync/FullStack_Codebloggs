@@ -21,7 +21,7 @@ function CreatepostModal(props) {
 
   return (
     <div>
-      <Button variant = "dark" onClick={handleEdit}> Post! </Button>
+      <Button className = "postButton" variant = "dark" onClick={handleEdit}> Post! </Button>
       <MypostModal
         show={showModal}
         handleClose={handleClose}

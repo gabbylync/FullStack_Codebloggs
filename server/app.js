@@ -12,8 +12,10 @@ const port = process.env.PORT || 3004;
 const UserRoutes = require ('./src/routes/users.routes')
 const CommentRoutes = require ('./src/routes/comment.routes')
 const PostRoutes = require ('./src/routes/post.routes')
-
-
+// cors error message fix// 
+const cors = require('cors')
+// cors error message fix// 
+app.use(cors())
 
 //use routes
 UserRoutes.registerUserRoutes(app)

@@ -1,70 +1,10 @@
-# Getting Started with Create React App
+# WEEK 9
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### What, if any DATA is required from the backend to render the wireframe? Generate documentation for any required API. If no dynamic data are required, indicate that.
 
-## Available Scripts
+   Wireframing is a method of backend organization that depicts the layout of pages and button navigation. Wireframes are a vital tool in understanding how a website is going to function as well as what the user interface should look like. The purpose of a wireframe is to plan the user interface design in an easy to understand format that can be changed and updated as the planning process moves forward. 
+	  You could put dummy data into your wireframe just for aesthetics however, you need working endpoints in your wireframe in order to render specific data from your backend. For example, in this project, we needed to fetch our functional API endpoints from the server side in order to create our the blog and user posts. We also needed API endpoints to call for the login and register page to work as well. If we didn’t have these endpoints, our users wouldn’t be saved and the login process would not be able to work correctly.
 
-In the project directory, you can run:
+### What, if any, ACTIONS is this wireframe responsible for? Button clicks and form submissions often trigger logic that leverages the API layer. Generate documentation for any required API. If no actions are required, indicate that.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  I have been running into issues with submission buttons when making the wireframe for the frontend. The page will pop up with errors if the actions are undefined or don’t have the correct API calls needed to complete the submission. This makes the wireframe harder to complete because the errors need to be cleared in order to see the page and continue with your project. I found that commenting out these actions like the onChanges and the onClicks was a good way to keep the page structured and also error free. Then once I got my information from the backend, I was able to uncomment the corresponding action. 

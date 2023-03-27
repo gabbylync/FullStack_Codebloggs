@@ -1,31 +1,34 @@
 
 .admincard{
-    background-color: rgb(46, 3, 84);
+    background-color: rgb(44, 5, 89);
+ 
 }
 
 
 .usermanagement {
-    width: 800px;
-    margin: 65px 40px 100px 150px;
+    width: 700px;
+    margin: 65px 40px 100px 390px;
 }
 
 
 .usermanagementText{
     /* width: 900px; */
-    font-size: 80px;
+    font-size: 89px;
     font-variant: small-caps;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    margin: 250px 40px 100px 500px;
+    margin: 190px 40px 100px 410px;
+    text-shadow: 1px 1px 2px rgb(253, 253, 253), 0 0 25px rgb(238, 236, 240), 0 0 5px rgb(255, 255, 255);
 }
 
 .usermanagement2{
-    width: 800px;
-    margin: 0px 40px 100px 150px;
+    width: 700px;
+    margin: 0px 40px 100px 390px;
 }
 .usermanagementText2{
     /* width: 900px; */
     font-size: 80px;
     font-variant: small-caps;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    margin: 210px 40px 100px 500px;
+    margin: 140px 40px 100px 390px;
+    text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255);
 }

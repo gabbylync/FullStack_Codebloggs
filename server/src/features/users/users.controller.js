@@ -7,6 +7,7 @@ const userRegister = async (req, res) => {
   const {
     first_name,
     last_name,
+    birthday,
     email,
     password,
     status,
@@ -14,6 +15,10 @@ const userRegister = async (req, res) => {
     occupation,
     auth_level,
   } = req.body;
+  if(!occupation ||!location ||!status || !email || !password || !last_name || !first_name )
+    {
+        return res.status(422).json({error:"Add all data"})
+    }
   User.findOne({ email: email }, (err, user) => {
     if (user) {
       res.send({ message: "user already exist" });
@@ -21,6 +26,7 @@ const userRegister = async (req, res) => {
       const user = new User({
         first_name,
         last_name,
+        birthday,
         email,
         password,
         status,
@@ -121,6 +127,19 @@ const userUpdate = async (req, res) => {
     res.status(404).send({ error: err });
   }
 };
+///////////////////////////////////////////
+//// GET  /sessionemail/:token //////
+////////////////////////////////////////
+const getEmail = async(req, res) => {
+  try {
+      const sessionID = req.params;
+      const session = await Session.findOne({token: req.params.token}).populate('user')
+      res.status(200).json({session})
+  } catch (error) {
+      res.status(404).json({msg: error})
+  }
+}
+
 
 module.exports = {
   userRegister,
@@ -129,4 +148,5 @@ module.exports = {
   returnUsers,
   userUpdate,
   validateTokenEndpoint,
+  getEmail
 };

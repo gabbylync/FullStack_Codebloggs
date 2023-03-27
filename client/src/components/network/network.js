@@ -10,9 +10,44 @@ import {
   MDBRow,
   MDBCol
 } from 'mdb-react-ui-kit';
+// import CookieMonster from "../cookies/CookieMonster";
+import {getCookie} from "react-use-cookie";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 export default function Network() {
+
+  const navigate = useNavigate();
+   /////////////////////////////////////////
+  /// getting token validated on this page ////
+  const token = getCookie('token');
+  console.log('true' , token);
+
+  useEffect(() => {
+    async function getValidation() {
+    
+      const response = await fetch(
+        `http://localhost:3004/validatetoken/${token}`
+      );
+      const res = await response.json();
+
+      if (res.msg === "No tokens are found" || token === undefined)
+       {
+        navigate("/")
+        return;
+      }
+      if (res.msg == "Congrats: Validated Token!") {
+        const message = "Validation Success"
+        window.alert(message);
+        navigate("/network")
+        return;
+      }
+    }
+
+    getValidation();
+  }, []);
+///////////////////////////////////////
     return (
    
             <MDBRow className='row-cols-1 row-cols-md-3 g-4'>

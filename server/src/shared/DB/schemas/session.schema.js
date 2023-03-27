@@ -4,13 +4,20 @@ const SessionSchema = new mongoose.Schema(
   {
     token: {
       type: String,
+      trim: true,
+      required: true
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      type: String,
+      trim: true,
+      // type: String,
     },
-    createdAt: { type: Date, expires: 10000 },
+    createdAt: { 
+      type: Date,
+       expires: 86400,
+       default: Date.now
+       },
   },
   { timestamps: true }
 );

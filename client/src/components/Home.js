@@ -12,10 +12,41 @@ import {
   MDBCol
 } from 'mdb-react-ui-kit';
 import LikeButton from '././likeButton';
+import {getCookie} from "react-use-cookie";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css'
 import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/home.css'
 
 export default function Home() {
+  const navigate = useNavigate();
+  const token = getCookie('token');
+  console.log('true' , token);
+
+  useEffect(() => {
+    async function getValidation() {
+    
+      const response = await fetch(
+        `http://localhost:3004/validatetoken/${token}`
+      );
+      const res = await response.json();
+
+      if (res.msg === "No tokens are found" || token === undefined)
+       {
+        navigate("/")
+        return;
+      }
+      if (res.msg == "Congrats: Validated Token!") {
+        const message = "Validation Success"
+        window.alert(message);
+        navigate("/home")
+        return;
+      }
+    }
+
+    getValidation();
+  }, []);
+
     return (
  
         <div>
@@ -33,7 +64,7 @@ export default function Home() {
                 99 problems, but a bug ain't one 
               </MDBCardText>
             </MDBCardBody>
-            <MDBListGroup  flush>
+            <MDBListGroup  >
         <MDBListGroupItem className='firstname'> First Name </MDBListGroupItem>
         <MDBListGroupItem className='firstname'> Last Name </MDBListGroupItem>
         <MDBListGroupItem className='firstname'> Email </MDBListGroupItem>
@@ -54,7 +85,7 @@ export default function Home() {
               </MDBCardText>
               <LikeButton/>
             </MDBCardBody>
-            <MDBListGroup flush>
+            <MDBListGroup >
         <MDBListGroupItem>Post Date</MDBListGroupItem>
         <MDBListGroupItem className='commentlist'>Comment List</MDBListGroupItem>
         <MDBListGroupItem> ......</MDBListGroupItem>
@@ -72,7 +103,7 @@ export default function Home() {
               </MDBCardText>
               <LikeButton/>
             </MDBCardBody>
-            <MDBListGroup flush>
+            <MDBListGroup >
         <MDBListGroupItem>Post Date</MDBListGroupItem>
         <MDBListGroupItem className='commentlist'>Comment List</MDBListGroupItem>
         <MDBListGroupItem>.....</MDBListGroupItem>
@@ -89,7 +120,7 @@ export default function Home() {
               </MDBCardText>
               <LikeButton/>
             </MDBCardBody>
-            <MDBListGroup flush>
+            <MDBListGroup >
         <MDBListGroupItem>Post Date</MDBListGroupItem>
         <MDBListGroupItem className='commentlist'>Comment List </MDBListGroupItem>
         <MDBListGroupItem>.....</MDBListGroupItem>
