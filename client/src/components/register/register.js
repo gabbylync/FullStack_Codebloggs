@@ -11,6 +11,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { Link as RouterLink } from "react-router-dom";
+import isEmail from 'validator/lib/isEmail';
 import DatePicker from "react-date-picker";
 import { useNavigate } from "react-router";
 import validator from "validator";
@@ -20,6 +21,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import Button from 'react-bootstrap/Button';
 import {
+  FormControl,
   FormHelperText,
 } from '@mui/material'
 
@@ -264,12 +266,13 @@ if (res.msg === 'user already exist') {
                   onChange={handleChange("email")}
                   // error={errors.email}
                   // helperText={
-                    // errors.email && "Please insert a valid email address"
+                  //   errors.email && "Please insert a valid email address"
                   // }
                 />
               </MDBCol>
-
+         
               <MDBCol col="6">
+          
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Password"
@@ -277,12 +280,16 @@ if (res.msg === 'user already exist') {
                   type="password"
                   defaultValue={values.password}
                   onChange={handleChange("password")}
+                  
                   // error={errors.password}
                   // helperText={errors.email &&
                   //   "Password must be at least 8 characters, have one symbol, 1 uppercase letter, 1 lowercase and 1 digit"
                   // }
                 />
+      
+               
               </MDBCol>
+      
             </MDBRow>
             <MDBRow>
               <MDBCol col="6">
@@ -366,7 +373,11 @@ if (res.msg === 'user already exist') {
                 >
                   Sign Up
                 </MDBBtn>
-             
+                {errors.fetchError && (
+              <FormHelperText error>{errors.fetchErrorMsg}
+          Must fill in all inputs to register
+              </FormHelperText>
+            )}
               </MDBCol>
             </MDBRow>
             <br />

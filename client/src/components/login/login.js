@@ -186,9 +186,10 @@ function Login() {
               <h2 className="codeblogger">Welcome back Codeblogger</h2>
             </div>
 
-            <p className="text-center">Please login to your account</p>
+            <p className="logintext">Please login to your account</p>
             <MDBInput
-              wrapperClass="mb-4"
+              className="logintext"
+              wrapperClass="mb-4 email"
               label="Email address"
               id="form1"
               type="email"
@@ -200,7 +201,8 @@ function Login() {
             />
     
             <MDBInput
-              wrapperClass="mb-4"
+             className="logintext"
+              wrapperClass="mb-4 email"
               label="Password"
               id="form2"
               value={values.password}
@@ -209,7 +211,7 @@ function Login() {
             
             />
             <MDBBtn 
-            className="mb-4 w-100 gradient-custom-3"
+            className="mb-4 w-100 gradient-custom-3 logintext"
             href="/home"
             component="form"
             onClick={handleSubmit}>
@@ -218,8 +220,8 @@ function Login() {
             <ToastContainer/>
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-              <p className="mb-0">Don't have an account?</p>
-              <MDBBtn outline className="mx-2" color="dark" href="/register">
+              <p className="logintext">Don't have an account?</p>
+              <MDBBtn outline className="mx-2 logintext" color="dark" href="/register">
                 Register Here
               </MDBBtn>
             

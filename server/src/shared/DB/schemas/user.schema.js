@@ -6,13 +6,15 @@ const UserSchema = new mongoose.Schema({
   first_name: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+    maxLength: 25
     
   },
   last_name: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+    maxLength: 25
     
   },
 
@@ -29,7 +31,9 @@ const UserSchema = new mongoose.Schema({
     trim: true,
     required: true,
     unique: true,
-    validate:[validator.isEmail, 'provide valid email']
+    maxLength: 25,
+    validate:[validator.isEmail, 'provide valid email'],
+    maxLength: 50
 
   },
  password: {
@@ -40,18 +44,21 @@ const UserSchema = new mongoose.Schema({
 
  status: {
     type: String,
-    required: true
+    required: true,
+    maxLength: 25
  },
 
  location: {
     type: String,
-    required: true
+    required: true,
+    maxLength: 25
 
  },
 
  occupation: {
     type: String,
-    required: true
+    required: true,
+    maxLength: 25
  },
 
  auth_level: {

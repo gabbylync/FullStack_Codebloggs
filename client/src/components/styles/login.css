@@ -44,7 +44,15 @@
  .loginform{
   margin: 200px 50px 320px 20px;
  }
-  
+
+ .logintext{
+  font-variant: small-caps;
+  text-align: center;
+ }
+
+ .email{
+  font-variant: small-caps;
+ }
 
 /* these are sectioned off because they belong to the home page
 they wouldn't change color on home.css for some reason*/
