@@ -18,6 +18,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { regexPassword } from "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/utils.js";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import Button from 'react-bootstrap/Button';
+import {
+  FormHelperText,
+} from '@mui/material'
 
 function Register() {
   // const [birthday, setBirthday] = useState(new Date());
@@ -147,9 +151,7 @@ function Register() {
 ////////////////////////////
  /////Toasters/////
  ///////////////////////
-//  if (res.msg === 'Agent created') {
-//   toast.success("Success: Loading Agent Info...", {position:toast.POSITION.TOP_CENTER, theme: 'colored', autoClose: 5000, onClose: ()=>{navigate("/Agentlist") }})
-// }
+
 if (res.msg === 'Add all data') {
     toast.error("Error: Must add all data flieds", {position:toast.POSITION.TOP_CENTER, theme: 'dark', autoClose: 5000, onClose: ()=>{navigate("/")}})
   
@@ -185,7 +187,8 @@ if (res.msg === 'user already exist') {
             "There was a problem with our server, please try again later",
         });
       }
-
+     
+      
       navigate('/')
      
     };
@@ -197,25 +200,27 @@ if (res.msg === 'user already exist') {
     <ToastContainer/>
       <MDBContainer fluid>
         <div
-          className="p-4 bg-image"
+          className="bg-image"
           style={{
             backgroundImage:
               "url(https://s3.envato.com/files/b6d73684-463e-4397-983b-5bd6b725d482/inline_image_preview.jpg)",
-            height: "860px",
+            height: "1020px",
+            width: "1900px"
           }}
         ></div>
 
         <MDBCard
-          className="mx-5 mb-5 p-5 shadow-5"
+          className="registerhere"
           style={{
-            marginTop: "-800px",
+            marginTop: "-1000px",
             background: "hsla(0, 0%, 100%, 0.8)",
             backdropFilter: "blur(10px)",
           }}
         >
           <MDBCardBody className="p-1 text-center">
-            <h2 className="fw-bold mb-5">Register Here</h2>
-
+            <h2 className="">Register Here</h2>
+<br/>
+<br/>
             <MDBRow 
             //  onSubmit={handleSubmit}
              component="form">
@@ -341,18 +346,21 @@ if (res.msg === 'user already exist') {
                   label="auth_level"
                   id="form8"
                   type="text"
-                  value={values.status}
+                  value={values.auth_level}
                   onChange={handleChange("auth_level")}
-                  // error={errors.birthday}
+                  // error={errors.auth_level}
                
                 /> */}
 
               </MDBCol>
 
               <MDBCol col="6">
+                <br/>
+                <br/>
+                <br/>
                 <MDBBtn
-                  className=" btn btn-outline-dark btn-lg"
-                  
+              
+                  className="btn-lg btn-dark"
                   type="submit"
                   onClick={handleSubmit}
                 >

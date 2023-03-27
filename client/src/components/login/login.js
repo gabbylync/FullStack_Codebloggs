@@ -174,7 +174,7 @@ function Login() {
     <MDBContainer className=" my-4 gradient-form align-items-stretch">
       <MDBRow>
         <MDBCol col="6" className="loginleft">
-          <div className="flex flex-column ms-5">
+          <div className="loginform">
             <div className="text-center">
               <img
                 src="https://i.ibb.co/RBbJS4p/Code-Bloggs-graphic.png"

@@ -113,7 +113,7 @@ function initals (name){
 
 
 
-let myphotos = ["/HD-wallpaper-keyboard-lighta-color-lights-purple-purple-lighta-rgb.jpg", "/logo192.png", "/logo512.png"]
+let myphotos = ["/HD-wallpaper-keyboard-lighta-color-lights-purple-purple-lighta-rgb.jpg", "/vwt54ake2n6tkobe.jpg", "/photo-1582769923195-c6e60dc1d8dc.jpg", "/tumblr_29bffd3826fa18d688410118a35f762c_cccc24d0_1280.jpg", "/IMG_8759.jpg", "/c1299fde40743509087146be4225e840.jpg", "/1317493acaa7eba2580dabda5d3c31f3d2af2a65r1-500-500v2_00.jpg", "/il_fullxfull.3607298325_bu04.webp"]
 function photos(arr){
    const randomPhoto = Math.floor(Math.random() * arr.length);
    const photo = arr[randomPhoto];

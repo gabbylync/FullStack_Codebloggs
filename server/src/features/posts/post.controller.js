@@ -6,14 +6,13 @@ const postCreate = async (req, res) => {
     res.status(201).json({ msg: "Post Created", data: post });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ msg: err });
+    res.status(500).json({ msg: "error" });
   }
 };
 //// Get: /allPosts /////////
 const allPosts = async(req, res) => {
   try{
-      // const postz = await Post.find({}).sort({date : -1});
-      const postz = await Post.find({}).populate('user')
+      const postz = await Post.find({}).populate('user').sort({date:-1})
       res.status(200).send({msg: 'All post successful', data: postz})
 
   } catch (error){
