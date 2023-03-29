@@ -8,6 +8,7 @@ import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/componen
 import {getCookie} from "react-use-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import CreatebloggsModal from "../comments/CreatebloggsModal";
 
 import {
   MDBCard,
@@ -66,7 +67,12 @@ export default function Bloggs() {
     let data = await response.json();
     setPosts(data.data);
     console.log("posts:", data?.data.date);
+    console.log("look here" , data.data)
+    console.log("no look here , ")
   }
+
+  console.log('this is post var')
+  console.log(posts)
 ///////////////////////////////////////
 useEffect(() => {
 
@@ -127,13 +133,16 @@ function photos(arr){
           </MDBCol>
           <MDBCol md="8">
             <MDBCardBody>
+              {/* <MDBCardTitle className = "blogInitals"> GC </MDBCardTitle> */}
               <MDBCardTitle className = "blogInitals"> {initals(post.user.first_name + " " + post.user.last_name)} </MDBCardTitle>
-              <MDBCardText className="blogText">
+              <MDBCardText className="blogText"> 
                {post.content}
               </MDBCardText>
-              <MDBCardText className="blogText">
+              < CreatebloggsModal postID={post._id}/>
+              
+              {/* <MDBCardText className="blogText">
             Comment List 
-              </MDBCardText>
+              </MDBCardText> */}
               <MDBCardText>
                 <small className="text-muted">{post.date}</small>
               </MDBCardText>

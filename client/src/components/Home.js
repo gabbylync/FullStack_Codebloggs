@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
 import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/home.css";
+import CreateHomeCommentmodal from "./comments/CreateHomeCommentmodal";
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
   // console.log("true", token);
   const [homeUser, setHomeUser] = useState();
   const [posts, setPosts] = useState([]);
+  const [res , setRes] = useState()
 
   useEffect(() => {
     let user = {}
@@ -45,36 +47,38 @@ export default function Home() {
         return;
       }
     }
-
+  
     getValidation();
 
-    //// getting the user that is logged in's info ////
-    async function getHomeUser() {
-      const response = await fetch(
-        `http://localhost:3004/session-email/${token}`
-      );
 
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-      const res = await response.json();
+   //// getting the user that is logged in's info ////
+   async function getHomeUser() {
+    const response = await fetch(
+      `http://localhost:3004/session-email/${token}`
+    );
 
-      // console.log("this is res");
-      // console.log(res);
-      setHomeUser(res.session.user);
-      user = res.session.user
-      // console.log("howdy:", res.session.user);
-      //  console.log("look at me:", homeUser)
-      userPostsbyUserID(res.session.user._id)
+    if (!response.ok) {
+      const message = `An error occurred: ${response.statusText}`;
+      window.alert(message);
+      return;
     }
+    const res = await response.json();
+
+  
+    setHomeUser(res.session.user);
+     user = res.session.user
+  
+    // userPostsbyUserID()
+    userPostsbyUserID(res.session.user._id)
+  }   
     getHomeUser();
 
     ///// getting posts from user that is logged in /////
 
     
   }, []);
+
+
 
   async function userPostsbyUserID(id) {
     console.log("id" , id)
@@ -161,14 +165,16 @@ export default function Home() {
                           {post.content}
                         </MDBCardText>
                         <LikeButtonHome  postID = {post._id} postLike ={post.likes}
-                          refresh = {userPostsbyUserID} />
+                          refresh = {userPostsbyUserID} userID = {homeUser} />
                       </MDBCardBody>
                       <MDBListGroup>
-                        <MDBListGroupItem  className="postdate">{post.date}</MDBListGroupItem>
+                        
                         <MDBListGroupItem className="commentlist">
-                          Comment List
+                       Date posted:  {post.date}
                         </MDBListGroupItem>
-                        <MDBListGroupItem> ......</MDBListGroupItem>
+
+                    < CreateHomeCommentmodal postID={post._id} /> 
+                       
                       </MDBListGroup>
                    
                     </MDBCard>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css"
 // //////////////////////////////
 // /// getting posts by user ID ///////
 // ////////////////////////////

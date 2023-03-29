@@ -1,3 +1,8 @@
+/* /////////////////////////////////////////////////////////// */
+ /* If you are lookign for .firstname and .firstname2 they are 
+               /*  on the login.css page  */
+/* ////////////////////////////////////////////////////////// */
+
 /* .container{
   justify-content: right;
    
@@ -42,8 +47,18 @@
 .posts2{
     color: rgb(255, 255, 255);
     text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+
 }
 
 .postdate{
     color: rgb(255, 255, 255);
+}
+
+.homecommentButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }

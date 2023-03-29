@@ -14,8 +14,8 @@ function CreatepostModal(props) {
   };
 
   const handleSave = (e) => {
-    e.preventDefault()
-    props.updateHandle();
+    // e.preventDefault()
+    // props.createHandle();
     setShowModal(false);
   };
 

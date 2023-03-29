@@ -61,15 +61,17 @@ they wouldn't change color on home.css for some reason*/
   background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
   text-align: center;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
   font-variant: small-caps;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .firstname2{
   color: rgb(255, 255, 255);
   background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 .commentlist{
   text-align: center;

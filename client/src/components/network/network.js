@@ -109,7 +109,9 @@ export default function Network() {
                     <MDBCardText className="userStatus">
                       Status: {user.status}
                     </MDBCardText>
+
                     <CreatenetworkModal userID ={user._id}/>
+                    
                   </MDBCardBody>
                 </MDBCard>
               
