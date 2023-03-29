@@ -29,9 +29,11 @@ export default function Header() {
   }
   getEmail();
 
-  // getEmail();
+
   return;
  }, [])
+
+
 
   const navigate = useNavigate();
   const [isLoggedIn, setisLoggedIn] = useState();

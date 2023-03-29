@@ -47,11 +47,15 @@ const userRegister = async (req, res) => {
 
 const userLogin = async (req, res) => {
   const { email, password } = req.body;
-  const userSess = { user: User.email, userID: User._id, token: uuidv4() };
-  const sess = Session.create(userSess);
+  // const userSess = { user: User.email, userID: User._id, token: uuidv4() };
+  
   User.findOne({ email: email }, (err, user) => {
     if (user) {
       if (password === user.password) {
+        console.log(user._id)
+        const userSess = { user: user._id, token: uuidv4() };
+
+        const sess = Session.create(userSess);
         res.send({
           message: "sucessfull",
           user: user._id,
@@ -84,15 +88,18 @@ const validateTokenEndpoint = async (req, res) => {
   }
 };
 
+
 const userById = async (req, res) => {
   try {
-    const userId = await User.findOne({ user: req.query._id });
+    console.log(req.params._id)
+    const userId = await User.findById(req.params._id);
     res.send(userId);
     console.log(userId);
   } catch (error) {
     res.status(500).json({ msg: "Error: User Not Found." });
   }
 };
+
 
 const returnUsers = async (req, res) => {
   try {

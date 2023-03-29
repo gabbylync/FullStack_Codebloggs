@@ -39,11 +39,13 @@ const getPostById = async (req, res) => {
 
 const postByUserId = async (req, res) => {
   try {
-    const posts = await Post.find({ user: req.params.id }).select("content");
+    console.log("id" , req.params.id)
+    // const posts = await Post.find({ user: req.params.id }).select("content").sort({date: -1});
+    const posts = await Post.find({ user: req.params.id }).sort({date: -1});
     console.log(posts);
-    res.send(posts);
+    res.status(200).send(posts);
   } catch (error) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ msg: "Error getting user by ID"});
   }
 };
 
@@ -86,7 +88,7 @@ const postDelete = async (req, res) => {
 const postLike = async (req, res) => {
   try {
     const post = await Post.findByIdAndUpdate(
-      { id: req.params.id },
+      { _id: req.params.id },
       { $inc: { likes: 1 } },
       { new: true }
     );

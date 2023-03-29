@@ -1,12 +1,9 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
+import NetworkUserpost from "../network/networkUserPost"
 
-function MypostModal(props) {
-
-
-
-  
+function NetworkpostModal(props) {
   return (
     <Modal show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
@@ -18,23 +15,20 @@ function MypostModal(props) {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>What's on your mind?</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Label>  </Form.Label>
+            <NetworkUserpost userID ={props.userID}/>
             </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>
-        Nah, nevermind.. 
-        </Button>
-        <Button variant="dark" onClick={props.handleSave}> 
-                                           {/* updateHandle */}
-          Upload this sexy blogg post
+        Back to Network Page
         </Button>
       </Modal.Footer>
     </Modal>
   );
 }
 
-export default MypostModal;
+export default NetworkpostModal;
 
+   

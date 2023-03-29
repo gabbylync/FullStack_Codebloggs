@@ -4,7 +4,7 @@ import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css'
 // When the button is clicked, the initial state is set to 0, and the setLikes
 //  function is used to update the state and re-render the component with the revised amount of likes.
 
-function LikeButton(props) {
+function LikeButtonHome(props) {
    const [likes, setLikes] = useState(0);
    const [liked, setLiked] = useState(false);
 
@@ -33,4 +33,4 @@ async function likePost () {
   </div>
    );
 }
-export default LikeButton;
+export default LikeButtonHome;
