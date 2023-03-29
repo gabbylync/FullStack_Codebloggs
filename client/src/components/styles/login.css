@@ -60,6 +60,16 @@ they wouldn't change color on home.css for some reason*/
   color: rgb(255, 255, 255);
   background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
   text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  font-variant: small-caps;
+}
+
+.firstname2{
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
+  text-align: center;
+  font-size: 13px;
 }
 .commentlist{
   text-align: center;

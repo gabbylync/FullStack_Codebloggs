@@ -114,11 +114,26 @@
 }
 
 .userInfo{
-  color:rgb(224, 195, 251)
+  color:rgb(224, 195, 251);
+  font-variant: small-caps;
 }
 
 .mostRecent{
   color:rgb(224, 195, 251)
+}
+
+.network{
+  margin: auto;
+  width: 500px;
+  text-align: center;
+  /* justify-content: center; */
+ 
+}
+
+.postContent{
+  font-size: 30px;
+  font-variant: small-caps;
+  color:rgb(119, 36, 197);
 }
 
 /* Bloggs page */

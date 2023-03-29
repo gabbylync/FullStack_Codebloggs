@@ -1,8 +1,8 @@
 import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
+
 import React from "react";
 import Card from "react-bootstrap/Card";
 import LikeButton from "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/likeButton.js";
-import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css'
 import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/blogg.css'
 // import CookieMonster from "../cookies/CookieMonster";
 import {getCookie} from "react-use-cookie";
@@ -23,7 +23,7 @@ export default function Bloggs() {
 
   const navigate = useNavigate();
   const [posts, setPosts] = useState();
-  const [users, setUsers] = useState('poop');
+  const [users, setUsers] = useState();
   /////////////////////////////////////////
   /// getting token validated on this page ////
   const token = getCookie('token');
@@ -52,8 +52,7 @@ export default function Bloggs() {
 
     getValidation();
   }, []);
-///////////////////////////////////////
-useEffect(() => {
+
   async function getallPosts() {
     const response = await fetch(`http://localhost:3004/allPosts`);
     
@@ -68,6 +67,9 @@ useEffect(() => {
     setPosts(data.data);
     console.log("posts:", data?.data.date);
   }
+///////////////////////////////////////
+useEffect(() => {
+
 
   getallPosts();
 
@@ -86,25 +88,7 @@ useEffect(() => {
 
   getUsers();
 
-  
-//////////////////////////////////////////////////
-
-// async function getPost(id) {
-//   const response = await fetch(`http://localhost:3004/post-byId/${id}`);
-  
-//   const newPost = post?.filter((el) => el.id == id);
-//   setPost(newPost);
-//    const res = response.json()
-//   if (!res.ok) {
-//     const message = `An error occurred: ${response.statusText}`;
-//     window.alert(message);
-//     return;
-//   }
-
-
-// }
-
-// getPost();
+//////////////////////////////////////
   return;
 }, []);
 
@@ -129,8 +113,8 @@ function photos(arr){
     {posts
    ? posts.map((post)=>{
     return(
-      <>
-      <MDBRow className="row-cols-1 row-cols-md-3 g-4">
+    
+      <MDBRow key = {post._id} className="row-cols-1 row-cols-md-3 g-4">
       <MDBCard className="cardBloggs w-50" background='dark'>
         <MDBRow className="g-0">
           <MDBCol md="4">
@@ -154,77 +138,21 @@ function photos(arr){
                 <small className="text-muted">{post.date}</small>
               </MDBCardText>
             </MDBCardBody>
-            <LikeButton/>
+            <LikeButton postID = {post._id} postLike ={post.likes} 
+            refresh = {getallPosts}/>
           </MDBCol>
         </MDBRow>
       </MDBCard>
   </MDBRow>
-  <br/>
-  </>
+
+  
     )
 
    }) : null
    
 }
     
-    {/* <MDBRow className="row-cols-1 row-cols-md-3 g-4">
-    <MDBCard className="cardBloggs w-50" background='dark'>
-      <MDBRow className="g-0">
-        <MDBCol md="4">
-          <MDBCardImage
-            src="https://wallpapers.com/images/featured/vwt54ake2n6tkobe.jpg"
-            alt="..."
-            className = "img-fluid rounded-pill"
-          />
-        </MDBCol> */}
-        {/* <MDBCol md="8">
-          <MDBCardBody>
-            <MDBCardTitle className = "blogInitals">initals</MDBCardTitle>
-            <MDBCardText className="blogText">
-           Post Content
-            </MDBCardText>
-            <MDBCardText className="blogText">
-              Comment List 
-                </MDBCardText>
-            <MDBCardText>
-              <small className="text-muted">Date</small>
-            </MDBCardText>
-          </MDBCardBody>
-          <LikeButton/>
-        </MDBCol>
-      </MDBRow>
-    </MDBCard>
-</MDBRow>
-<br/>
-<MDBRow className="row-cols-1 row-cols-md-3 g-4">
-    <MDBCard className="cardBloggs w-50" background='dark'>
-      <MDBRow className="g-0">
-        <MDBCol md="4">
-          <MDBCardImage
-            src="https://images.unsplash.com/photo-1582769923195-c6e60dc1d8dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHVycGxlJTIwYWVzdGhldGljfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-            alt="..."
-            className = "img-fluid rounded-pill"
-          />
-        </MDBCol>
-        <MDBCol md="8">
-          <MDBCardBody>
-            <MDBCardTitle className = "blogInitals">initals </MDBCardTitle>
-            <MDBCardText  className="blogText">
-         Post Content
-            </MDBCardText>
-            <MDBCardText className="blogText">
-              Comment List 
-                </MDBCardText>
-            <MDBCardText>
-              <small className="text-muted">Date</small>
-            </MDBCardText>
-          </MDBCardBody>
-          <LikeButton/>
-        </MDBCol>
-      </MDBRow>
-    </MDBCard> */}
-{/* </MDBRow> */}
-<br/>
+   
 </>
 
 

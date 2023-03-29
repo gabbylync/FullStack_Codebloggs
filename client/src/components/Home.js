@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import {
   MDBCard,
   MDBListGroup,
@@ -9,138 +8,178 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBRow,
-  MDBCol
-} from 'mdb-react-ui-kit';
-import LikeButton from '././likeButton';
-import {getCookie} from "react-use-cookie";
-import { useEffect } from "react";
+  MDBCol,
+} from "mdb-react-ui-kit";
+import LikeButtonHome from "././LikeButtonHome";
+import { getCookie } from "react-use-cookie";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css'
-import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/home.css'
+import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
+import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/home.css";
+
 
 export default function Home() {
   const navigate = useNavigate();
-  const token = getCookie('token');
-  console.log('true' , token);
+  const token = getCookie("token");
+  // console.log("true", token);
+  const [homeUser, setHomeUser] = useState();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    let user = {}
+    ///// getting token validation //////
     async function getValidation() {
-    
       const response = await fetch(
         `http://localhost:3004/validatetoken/${token}`
       );
       const res = await response.json();
 
-      if (res.msg === "No tokens are found" || token === undefined)
-       {
-        navigate("/")
+      if (res.msg === "No tokens are found" || token === undefined) {
+        navigate("/");
         return;
       }
       if (res.msg == "Congrats: Validated Token!") {
-        const message = "Validation Success"
-        window.alert(message);
-        navigate("/home")
+        const message = "Validation Success";
+        // window.alert(message);
+        navigate("/home");
         return;
       }
     }
 
     getValidation();
+
+    //// getting the user that is logged in's info ////
+    async function getHomeUser() {
+      const response = await fetch(
+        `http://localhost:3004/session-email/${token}`
+      );
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const res = await response.json();
+
+      // console.log("this is res");
+      // console.log(res);
+      setHomeUser(res.session.user);
+      user = res.session.user
+      // console.log("howdy:", res.session.user);
+      //  console.log("look at me:", homeUser)
+      userPostsbyUserID(res.session.user._id)
+    }
+    getHomeUser();
+
+    ///// getting posts from user that is logged in /////
+
+    
   }, []);
 
-    return (
- 
-        <div>
-        <MDBRow className='row-cols-1 row-cols-md-2 g-4'>
-        <MDBCol>
-          <MDBCard className = "homecard" background='dark'>
-            <MDBCardImage
-              src='https://www.businessleader.co.uk/wp-content/uploads/2021/08/Institute-of-Coding-1024x576.jpg'
-              alt='...'
-              position='top'
-            />
-            <MDBCardBody >
-              <MDBCardTitle className = 'initals'> GC</MDBCardTitle>
-              <MDBCardText className = 'status'>
-                99 problems, but a bug ain't one 
-              </MDBCardText>
-            </MDBCardBody>
-            <MDBListGroup  >
-        <MDBListGroupItem className='firstname'> First Name </MDBListGroupItem>
-        <MDBListGroupItem className='firstname'> Last Name </MDBListGroupItem>
-        <MDBListGroupItem className='firstname'> Email </MDBListGroupItem>
-        <MDBListGroupItem className='firstname'> Birthday  </MDBListGroupItem>
-        <MDBListGroupItem className='firstname'> Occupation</MDBListGroupItem>
-        <MDBListGroupItem className='firstname'> Location </MDBListGroupItem>
-      </MDBListGroup>
-          </MDBCard>
-        </MDBCol>
-        <MDBCol>
-          <MDBCard background='dark'>
-            <MDBCardBody >
-              <MDBCardTitle className='posts'> post </MDBCardTitle>
-             
-              <MDBCardText className='posts'>
-                This is a longer card with supporting text below as a natural lead-in to additional content.
-                This content is a little bit longer.
-              </MDBCardText>
-              <LikeButton/>
-            </MDBCardBody>
-            <MDBListGroup >
-        <MDBListGroupItem>Post Date</MDBListGroupItem>
-        <MDBListGroupItem className='commentlist'>Comment List</MDBListGroupItem>
-        <MDBListGroupItem> ......</MDBListGroupItem>
-      </MDBListGroup>
-
-          </MDBCard>
-          <br/>
-          <br/>
-          <MDBCard background='dark'>
-            <MDBCardBody>
-              <MDBCardTitle className='posts'> post </MDBCardTitle>
-              <MDBCardText className='posts'>
-                This is a longer card with supporting text below as a natural lead-in to additional content.
-                This content is a little bit longer.
-              </MDBCardText>
-              <LikeButton/>
-            </MDBCardBody>
-            <MDBListGroup >
-        <MDBListGroupItem>Post Date</MDBListGroupItem>
-        <MDBListGroupItem className='commentlist'>Comment List</MDBListGroupItem>
-        <MDBListGroupItem>.....</MDBListGroupItem>
-      </MDBListGroup>
-          </MDBCard>
-          <br/>
-          <br/>
-          <MDBCard background='dark'>
-            <MDBCardBody>
-              <MDBCardTitle className='posts'> post </MDBCardTitle>
-              <MDBCardText className='posts'>
-                This is a longer card with supporting text below as a natural lead-in to additional content.
-                This content is a little bit longer.
-              </MDBCardText>
-              <LikeButton/>
-            </MDBCardBody>
-            <MDBListGroup >
-        <MDBListGroupItem>Post Date</MDBListGroupItem>
-        <MDBListGroupItem className='commentlist'>Comment List </MDBListGroupItem>
-        <MDBListGroupItem>.....</MDBListGroupItem>
-      </MDBListGroup>
-          </MDBCard>
-        </MDBCol>
-        </MDBRow>
-        <br/>
-        <br/>
-        </div>
+  async function userPostsbyUserID(id) {
+    console.log("id" , id)
+    const response = await fetch(
+      `http://localhost:3004/post-by-user/${id}`
     );
+    if (!response.ok) {
+      const message = `An error occurred: ${response.statusText}`;
+      console.log("ERROR" ,message)
+      return;
+    }
+
+    let data = await response.json();
+    setPosts(data);
+    console.log("this is data: ", data);
+  }
+
+  function initals(name) {
+    let result = name
+      .split(" ")
+      .map((n) => n[0])
+      .join("");
+    return result.toUpperCase();
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  return (
+    <>
+    {/* <div className= "container2"> */}
+      <MDBRow className="row-cols-1 row-cols-md-2 g-4">
+        <MDBCol>
+          <MDBCard className="homecard" background="dark">
+            <MDBCardImage
+              src="https://www.businessleader.co.uk/wp-content/uploads/2021/08/Institute-of-Coding-1024x576.jpg"
+              alt="..."
+              position="top"
+            />
+            <MDBCardBody>
+              <MDBCardTitle className="initals">  {initals(homeUser?.first_name + " " + homeUser?.last_name)}  </MDBCardTitle>
+              {/* {initals(homeUser ? homeUser.first_name : null + " " + homeUser ? homeUser.last_name : null)} */}
+              <MDBCardText className="status"></MDBCardText>
+            </MDBCardBody>
+            <MDBListGroup>
+              <MDBListGroupItem className="firstname">
+                {" "}
+                {homeUser ? homeUser.first_name : null}{" "}
+              </MDBListGroupItem>
+              <MDBListGroupItem className="firstname">
+                {" "}
+                {homeUser ? homeUser.last_name : null}{" "}
+              </MDBListGroupItem>
+              <MDBListGroupItem className="firstname2">
+                {" "}
+                Email : {homeUser ? homeUser.email : null}
+              </MDBListGroupItem>
+              <MDBListGroupItem className="firstname2">
+                {" "}
+                B-Day : {homeUser ? homeUser.birthday : null}{" "}
+              </MDBListGroupItem>
+              <MDBListGroupItem className="firstname2">
+                {" "}
+                Occupation : {homeUser ? homeUser.occupation : null}{" "}
+              </MDBListGroupItem>
+              <MDBListGroupItem className="firstname2">
+                {" "}
+                Location : {homeUser ? homeUser.location : null}{" "}
+              </MDBListGroupItem>
+            </MDBListGroup>
+          </MDBCard>
+        </MDBCol>
+     
+
+        {posts
+          ? posts.map((post) => {
+              return (
+                
+            
+                  <MDBCol key={post._id}>
+                    <MDBCard background="dark" className="myposts">
+                      <MDBCardBody>
+                        <MDBCardTitle className="posts"> My posts </MDBCardTitle>
+                      <br/>
+                        <MDBCardText   className="posts2">
+                          {post.content}
+                        </MDBCardText>
+                        <LikeButtonHome  postID = {post._id} postLike ={post.likes}
+                          refresh = {userPostsbyUserID} />
+                      </MDBCardBody>
+                      <MDBListGroup>
+                        <MDBListGroupItem  className="postdate">{post.date}</MDBListGroupItem>
+                        <MDBListGroupItem className="commentlist">
+                          Comment List
+                        </MDBListGroupItem>
+                        <MDBListGroupItem> ......</MDBListGroupItem>
+                      </MDBListGroup>
+                   
+                    </MDBCard>
+                  </MDBCol>
+                
+              );
+            })
+          : null}
+      </MDBRow>
+      {/* </div> */}
+    </>
+  );
 }
 
-
-
-
-
-
-
-{/* <div className='main'>
-<h1>HOME PAGE</h1>
-
-</div> */}

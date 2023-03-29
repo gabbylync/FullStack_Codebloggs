@@ -10,7 +10,7 @@ const SessionSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      trim: true,
+      // trim: true,
       // type: String,
     },
     createdAt: { 
@@ -22,4 +22,4 @@ const SessionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Sessions", SessionSchema);
+module.exports = mongoose.model("Session", SessionSchema);

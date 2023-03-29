@@ -1,8 +1,17 @@
+/* .container{
+  justify-content: right;
+   
+} */
 
+/* .myposts{
+  width: 220px;
+  height: 220px;
+} */
 
 .homecard {
-    width: 700px;
-    margin: 135px 40px 70px 20px;
+    width: 600px;
+    /* margin: 65px 40px 70px 20px; */
+    margin: 65px 40px 70px 20px;
     color: white;
  
 }
@@ -24,6 +33,17 @@
     background-color: blueviolet;
 } */
 .posts{
-    color: white;
+    color: rgb(211, 172, 229);
+    text-align: center;
+    font-size: 35px;
+    font-family: "Lucida Console", cursive
 }
 
+.posts2{
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.postdate{
+    color: rgb(255, 255, 255);
+}
