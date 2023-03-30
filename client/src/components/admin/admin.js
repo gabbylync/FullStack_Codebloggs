@@ -1,10 +1,29 @@
 import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
 import React from "react";
-import Card from "react-bootstrap/Card";
 import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/admin.css"
 import {getCookie} from "react-use-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { MDBCol } from 'mdb-react-ui-kit';
+import { Container, CardGroup, Card, Row, Col } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+
+const styles = {
+  card: {
+    backgroundColor: `#D1C4E9`,
+    borderRadius: 90,
+    padding: "5rem",
+    width: "50%",
+    height: "60%",
+  },
+  cardImage: {
+    objectFit: "cover",
+    borderRadius: 10,
+  },
+  // contentManagementText: {
+    
+  // }
+};
 
 
 export default function Admin() {
@@ -30,7 +49,7 @@ export default function Admin() {
       }
       if (res.msg == "Congrats: Validated Token!") {
         const message = "Validation Success"
-        window.alert(message);
+        // window.alert(message);
         navigate("/admin")
         return;
       }
@@ -41,38 +60,69 @@ export default function Admin() {
 ///////////////////////////////////////
   return (
     <>
-    
-        <Card className="admincard">
-          <Card.Img 
-          className="usermanagement"
-            src="https://static.vecteezy.com/system/resources/previews/016/706/387/original/abstract-purple-watercolor-background-aesthetic-ink-painting-free-vector.jpg"
-            alt="Card image"
-          />
-          <Card.ImgOverlay>
-            <Card.Title className = "usermanagementText"
-            >User Management</Card.Title>
-           
-            <Card.Text>  </Card.Text>
-          </Card.ImgOverlay>
+     <Container fluid>
+      <CardGroup className="m-3 d-block">
+        <Card className="m-auto border-5 shadow" style={styles.card}>
+          <Row>
+            <Col>
+              <Card.Img src= "/avatar-profile-pink-neon-icon-brick-wall-background-pink-neon-icon-vector.jpg"
+               style={styles.cardImage} />
+            </Col>
+            <Col>
+              <Card.Body>
+                <Card.Title className ="userManagetext " as="h1">User Management</Card.Title>
+                <br />
+                <br />
+                <br />
+                <Button
+                  onClick={() => {
+                    navigate("/userManagement");
+                  }}
+                  type="submit"
+                  className="agentManagement"
+                  variant="dark"
+                >
+                  Click to View
+                </Button>
+              </Card.Body>
+            </Col>
+          </Row>
         </Card>
-     
-      <div>
-        <Card className="admincard">
-          <Card.Img
-          className="usermanagement2"
-            src="https://static.vecteezy.com/system/resources/previews/016/706/387/original/abstract-purple-watercolor-background-aesthetic-ink-painting-free-vector.jpg"
-            alt="Card image"
-          />
-          <Card.ImgOverlay>
-            <Card.Title className = "usermanagementText2"
-            >Content Management</Card.Title>
-            <Card.Text>
-             
-            </Card.Text>
-            <Card.Text>  </Card.Text>
-          </Card.ImgOverlay>
+      </CardGroup>
+      <CardGroup className="m-3 d-block">
+        <Card className="m-auto border-5 shadow" style={styles.card}>
+          <Row>
+            <Col>
+              <Card.Img src= "/neon-online-education-icon-glowing-neon-webinar-sign-digital-study-in-vivid-colors-video-course-distance-learning-teaching-platform-icon-set-sign-symbol-for-ui-vector-illustration-400-251017570-1.jpg"
+          
+               style={styles.cardImage} />
+            </Col>
+            <Col>
+              <Card.Body>
+                <Card.Title style={styles.contentManagementText} className="userManagetext " as="h1">Content Management</Card.Title>
+                <br />
+                <br />
+                <br />
+                <Button
+                  className="userContent"
+                  onClick={() => {
+                    navigate("/userContent");
+                  }}
+                  type="submit"
+                  variant="dark"
+                >
+                  Click to View
+                </Button>
+              </Card.Body>
+            </Col>
+          </Row>
         </Card>
-      </div>
+      </CardGroup>
+    </Container>
+
+   
     </>
   );
 }
+
+

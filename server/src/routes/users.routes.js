@@ -8,6 +8,7 @@ const registerUserRoutes = (app) => {
     app.get('/all-users', UserController.returnUsers)
     app.patch('/update-user/:id', UserController.userUpdate)
     app.get('/validatetoken/:token', UserController.validateTokenEndpoint)
+    app.delete('/user-delete/:id', UserController.userDelete)
     app.get('/session-email/:token', UserController.getEmail)
 }
 

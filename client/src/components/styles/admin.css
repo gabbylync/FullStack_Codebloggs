@@ -1,7 +1,14 @@
 
 .admincard{
-    background-color: rgb(44, 5, 89);
+    background-color: rgb(255, 254, 255);
  
+}
+
+.userManagetext{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-variant: small-caps;
+    font-size: 55px ;
+    
 }
 
 

@@ -12,7 +12,8 @@ import Bloggs from "./components/bloggs/bloggs"
 import Network from "./components/network/network"
 import Admin from "./components/admin/admin"
 import Login from "./components/login/login"
-
+import UserManagement from "./components/admin/userManagement";
+import Edit from "./components/admin/editUser";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
      <Route path="/bloggs" element={<Bloggs />} />
      <Route path="/network" element={<Network />} />
      <Route path="/admin" element={<Admin />} />
+     <Route path="/userManagement" element={<UserManagement />} />
+     <Route path="/edit/:id" element={<Edit />} />
 
      </Routes>
    </div>

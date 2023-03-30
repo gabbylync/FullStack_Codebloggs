@@ -1,0 +1,60 @@
+.centerPage {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    margin-left: 20%;
+    /* margin: 20px 50px; */
+    padding: 90px 1px;
+    /* height: auto; */
+  
+  }
+
+  .tableText{
+    color:rgb(212, 181, 233);
+    font-size: 28px;
+    height: 60px;
+    text-align: center;
+    font-variant: small-caps;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* border: 1px solid; */
+ 
+
+  }
+
+  .userTable{
+    width: 80%;
+    margin: -90px 85px; 
+    border: 1px rgb(197, 142, 236);
+  }
+
+  h1 span{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 55px;
+    font-variant: small-caps;
+    color:rgb(212, 181, 233);
+    background-color: rgb(13, 2, 27);
+  }
+
+  .usersData{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+
+  }
+
+  /*  editUser page CSS  */
+
+.editUserHeader{
+    margin: 50px 50px 50px 800px;
+}
+
+
+  h3 span{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 55px;
+    font-variant: small-caps;
+    color:rgb(212, 181, 233);
+    background-color: rgb(13, 2, 27);
+  }
+
+  .centerForm{
+    margin: -100px 0px 0px 520px;
+  }
