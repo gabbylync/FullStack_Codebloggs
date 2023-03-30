@@ -18,6 +18,7 @@ function App() {
   return (
 <div>
   <Header />
+
      <Navbars />
      <Routes>
      <Route path="/home" element={<Home />} />
@@ -25,8 +26,9 @@ function App() {
      <Route path="/" element={<Login />} />
      <Route path="/bloggs" element={<Bloggs />} />
      <Route path="/network" element={<Network />} />
+    
      <Route path="/admin" element={<Admin />} />
-
+      
      </Routes>
    </div>
 

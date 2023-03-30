@@ -1,7 +1,7 @@
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
+import "../../App.css";
 import React from "react";
 import Card from "react-bootstrap/Card";
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/admin.css"
+import "../styles/admin.css"
 import {getCookie} from "react-use-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";

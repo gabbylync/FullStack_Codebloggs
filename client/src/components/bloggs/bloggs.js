@@ -1,9 +1,9 @@
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
+import "../../App.css";
 
 import React from "react";
 import Card from "react-bootstrap/Card";
-import LikeButton from "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/likeButton.js";
-import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/blogg.css'
+import LikeButton from "../../components/likeButton";
+import '../styles/blogg.css'
 // import CookieMonster from "../cookies/CookieMonster";
 import {getCookie} from "react-use-cookie";
 import { useNavigate } from "react-router-dom";

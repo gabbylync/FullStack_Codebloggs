@@ -1,5 +1,5 @@
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/home.css";
+import "../../App.css";
+import "../styles/home.css";
 import React from "react";
 import {
   MDBCard,
