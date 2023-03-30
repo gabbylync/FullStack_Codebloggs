@@ -12,7 +12,7 @@ import CreatepostModal from "./modals/CreatepostModal";
 import { setCookie } from 'react-use-cookie';
 import { getCookie } from "react-use-cookie";
 import React, { useEffect } from "react";
-import '/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css'
+import '../App.css'
 
 export default function Header() {
   
@@ -26,7 +26,7 @@ export default function Header() {
       `http://localhost:3004/session-email/${token}`
     );
     const res = await response.json();
-    console.log(res)
+    // console.log(res)
 
    setEmail(res.session.user.email) 
   }

@@ -11,19 +11,16 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { Link as RouterLink } from "react-router-dom";
-import isEmail from 'validator/lib/isEmail';
+import isEmail from "validator/lib/isEmail";
 import DatePicker from "react-date-picker";
 import { useNavigate } from "react-router";
 import validator from "validator";
-import 'react-toastify/dist/ReactToastify.css';
-import { regexPassword } from "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/utils.js";
+import "react-toastify/dist/ReactToastify.css";
+import { regexPassword } from "../utils";
 import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import Button from 'react-bootstrap/Button';
-import {
-  FormControl,
-  FormHelperText,
-} from '@mui/material'
+import { ToastContainer, toast } from "react-toastify";
+import Button from "react-bootstrap/Button";
+import { FormControl, FormHelperText } from "@mui/material";
 
 function Register() {
   // const [birthday, setBirthday] = useState(new Date());
@@ -37,7 +34,7 @@ function Register() {
     occupation: "",
     location: "",
     birthday: "",
-    auth_level: "basic"
+    auth_level: "basic",
   });
   const [errors, setErrors] = useState({
     first_name: false,
@@ -55,6 +52,8 @@ function Register() {
 
   const handleChange = (fieldName) => (event) => {
     const currValue = event.target.value;
+    console.log(currValue);
+
     switch (fieldName) {
       case "first_name":
         currValue === values.first_name
@@ -80,12 +79,11 @@ function Register() {
           : setErrors({ ...errors, password: true });
         break;
 
-    case "status":
-          currValue === values.status
-            ? setErrors({ ...errors, status: false })
-            : setErrors({ ...errors, status: true });
-          break;
-
+      case "status":
+        currValue === values.status
+          ? setErrors({ ...errors, status: false })
+          : setErrors({ ...errors, status: true });
+        break;
 
       case "occupation":
         currValue === values.occupation
@@ -105,109 +103,135 @@ function Register() {
           : setErrors({ ...errors, birthday: true });
         break;
 
-    case "auth_level":
+      case "auth_level":
         currValue === values.auth_level
           ? setErrors({ ...errors, auth_level: false })
           : setErrors({ ...errors, auth_level: true });
         break;
     }
-    setValues({ ...values, [fieldName]: event.target.value });
+
+    setValues({ ...values, [fieldName]: currValue });
   };
 
- 
- 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
+  console.log(values.birthday);
 
-      try {
-      
-        const res = await fetch("http://localhost:3004/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            first_name: values.first_name,
-            last_name: values.last_name,
-            email: values.email,
-            password: values.password,
-            status: values.status,
-            occupation: values.occupation,
-            location: values.location,
-            birthday: values.birthday,
-            auth_level: "basic"
-          }),
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:3004/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name: values.first_name,
+          last_name: values.last_name,
+          email: values.email,
+          password: values.password,
+          status: values.status,
+          occupation: values.occupation,
+          location: values.location,
+          birthday: values.birthday,
+          auth_level: "basic",
+        }),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+
+        console.log(error.error);
+
+        // console.log("error", error.error );
+
+        setErrors({
+          ...errors,
+          fetchError: true,
+          fetchErrorMsg: error.msg,
         });
 
-        if (!res.ok) {
-          const error = await res.json();
-          return setErrors({
-            ...errors,
-            fetchError: true,
-            fetchErrorMsg: error.msg,
+        if (error.error === "Add all data") {
+          toast.error("Error: Must add all data flieds", {
+            position: toast.POSITION.TOP_CENTER,
+            theme: "dark",
+            autoClose: 5000,
+            onClose: () => {
+              navigate("/");
+            },
           });
         }
-
-        const data = await res.json();
-        console.log(data)
-////////////////////////////
- /////Toasters/////
- ///////////////////////
-
-if (res.msg === 'Add all data') {
-    toast.error("Error: Must add all data flieds", {position:toast.POSITION.TOP_CENTER, theme: 'dark', autoClose: 5000, onClose: ()=>{navigate("/")}})
-  
-  }
-if (res.msg === 'user already exist') {
-    toast.error("Error: User already exsists", {position:toast.POSITION.TOP_CENTER, theme: 'dark', autoClose: 5000, onClose: ()=>{navigate("/")}})
-  
-  }
-  
- ////////////////////////////////////////////////////////
-        setErrors({
-          ...errors,
-          fetchError: true,
-          fetchErrorMsg: data.msg,
-        });
-        setValues({
-          first_name: "",
-          last_name: "",
-          email: "",
-          password: "",
-          status: "",
-          occupation: "",
-          location: "",
-          birthday: "",
-          auth_level: "basic"
-        });
-        // return
-      } catch (error) {
-        setErrors({
-          ...errors,
-          fetchError: true,
-          fetchErrorMsg:
-            "There was a problem with our server, please try again later",
-        });
+        if (error.error === "user already exist") {
+          toast.error("Error: User already exsists", {
+            position: toast.POSITION.TOP_CENTER,
+            theme: "dark",
+            autoClose: 5000,
+            onClose: () => {
+              navigate("/");
+            },
+          });
+        }
       }
-     
-      
-      navigate('/')
-     
+
+      // console.log(data);
+      ////////////////////////////
+      /////Toasters/////
+      ///////////////////////
+
+      // toast.configure()
+
+      ////////////////////////////////////////////////////////
+      setErrors({
+        ...errors,
+        fetchError: true,
+        fetchErrorMsg: errors.fetchErrorMsg,
+      });
+      setValues({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        status: "",
+        occupation: "",
+        location: "",
+        birthday: "",
+        auth_level: "basic",
+      });
+      // return
+    } catch (error) {
+      setErrors({
+        ...errors,
+        fetchError: true,
+        fetchErrorMsg:
+          "There was a problem with our server, please try again later",
+      });
+    }
+   
+    navigate("/");
+  };
+
+  const handleDateChange = (date) => {
+    const event = {
+      target: {
+        value: date,
+      },
     };
- 
+
+    handleChange("birthday")(event);
+    return date;
+  };
 
   return (
     // this div is centering the register page between the two nav bars with css
     <div className="register">
-    <ToastContainer/>
       <MDBContainer fluid>
+        {/* <ToastContainer /> */}
         <div
           className="bg-image"
           style={{
             backgroundImage:
               "url(https://s3.envato.com/files/b6d73684-463e-4397-983b-5bd6b725d482/inline_image_preview.jpg)",
             height: "1020px",
-            width: "1900px"
+            width: "1900px",
           }}
         ></div>
 
@@ -221,11 +245,12 @@ if (res.msg === 'user already exist') {
         >
           <MDBCardBody className="p-1 text-center">
             <h2 className="">Register Here</h2>
-<br/>
-<br/>
-            <MDBRow 
-            //  onSubmit={handleSubmit}
-             component="form">
+            <br />
+            <br />
+            <MDBRow
+              //  onSubmit={handleSubmit}
+              component="form"
+            >
               <MDBCol col="6">
                 <MDBInput
                   component="form"
@@ -270,9 +295,8 @@ if (res.msg === 'user already exist') {
                   // }
                 />
               </MDBCol>
-         
+
               <MDBCol col="6">
-          
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Password"
@@ -280,16 +304,13 @@ if (res.msg === 'user already exist') {
                   type="password"
                   defaultValue={values.password}
                   onChange={handleChange("password")}
-                  
+
                   // error={errors.password}
                   // helperText={errors.email &&
                   //   "Password must be at least 8 characters, have one symbol, 1 uppercase letter, 1 lowercase and 1 digit"
                   // }
                 />
-      
-               
               </MDBCol>
-      
             </MDBRow>
             <MDBRow>
               <MDBCol col="6">
@@ -314,13 +335,12 @@ if (res.msg === 'user already exist') {
                   defaultValue={values.location}
                   onChange={handleChange("location")}
                   // error={errors.location}
-                 
                 />
               </MDBCol>
             </MDBRow>
 
             <MDBRow>
-              <MDBCol col="6">
+              {/* <MDBCol col="6">
               <MDBInput
                   wrapperClass="mb-4"
                   label="birthday"
@@ -330,15 +350,24 @@ if (res.msg === 'user already exist') {
                   onChange={handleChange("birthday")}
                   // error={errors.birthday}
                
+                /> */}
+              <MDBCol col="6">
+                {/* <label htmlFor="form5">Birthday</label> */}
+                
+                <MDBInput
+                  type="date"
+                  value={values.birthday}
+                  onChange={(event) => handleChange("birthday")(event)}
                 />
-                {/* <DatePicker
-                  onChange={(date) => setValues(birthday(date))}
-                  setBirthday={setBirthday("birthday")}
-                   defaultValue={value.birthday}
-                  error={errors.birthday}
+                
+                 <label htmlFor="form5">Birthday</label>
+                 <br />
+                 <br />
                  
-                > */}
-                  <MDBInput
+
+              
+
+                <MDBInput
                   wrapperClass="mb-4"
                   label="status"
                   id="form9"
@@ -346,9 +375,8 @@ if (res.msg === 'user already exist') {
                   defaultValue={values.status}
                   onChange={handleChange("status")}
                   // error={errors.birthday}
-               
                 />
-                 {/* <MDBInput
+                {/* <MDBInput
                   wrapperClass="mb-4"
                   label="auth_level"
                   id="form8"
@@ -358,15 +386,13 @@ if (res.msg === 'user already exist') {
                   // error={errors.auth_level}
                
                 /> */}
-
               </MDBCol>
 
               <MDBCol col="6">
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
                 <MDBBtn
-              
                   className="btn-lg btn-dark"
                   type="submit"
                   onClick={handleSubmit}
@@ -374,10 +400,11 @@ if (res.msg === 'user already exist') {
                   Sign Up
                 </MDBBtn>
                 {errors.fetchError && (
-              <FormHelperText error>{errors.fetchErrorMsg}
-          Must fill in all inputs to register
-              </FormHelperText>
-            )}
+                  <FormHelperText error>
+                    {errors.fetchErrorMsg}
+                    Must fill in all inputs to register
+                  </FormHelperText>
+                )}
               </MDBCol>
             </MDBRow>
             <br />
@@ -390,9 +417,11 @@ if (res.msg === 'user already exist') {
             </div>
           </MDBCardBody>
         </MDBCard>
+        <ToastContainer />
       </MDBContainer>
     </div>
   );
 }
 
 export default Register;
+

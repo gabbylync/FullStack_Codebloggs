@@ -5,8 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import validator from "validator";
 import useCookie from "react-use-cookie";
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/login.css";
-import { regexPassword } from "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/utils.js";
+import "../styles/login.css";
+import { regexPassword } from "../../components/utils";
 import {
   MDBBtn,
   MDBContainer,
