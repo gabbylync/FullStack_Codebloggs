@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import MypostModal from "./MypostModal";
+import EditModal from "../modals/EdituserModal";
 import { Button } from "react-bootstrap";
 
-function CreatepostModal(props) {
+
+function CreateEditModal(props) {
   const [showModal, setShowModal] = useState(false);
 
   const handleEdit = () => {
@@ -14,22 +15,24 @@ function CreatepostModal(props) {
   };
 
   const handleSave = (e) => {
-    // e.preventDefault()
-    // props.createHandle();
+    e.preventDefault()
+    props.updateHandle();
     setShowModal(false);
   };
 
   return (
     <div>
-      <Button className = "postButton" variant = "dark" onClick={handleEdit}> Post! </Button>
-      <MypostModal
+      <Button variant="dark" onClick={handleEdit}> Update </Button>
+      <EditModal
         show={showModal}
         handleClose={handleClose}
-        title="Post something!"
+        title="Hold your horses"
+        body="Are you sure you want to edit this user?"
         handleSave={handleSave}
       />
     </div>
   );
 }
 
-export default CreatepostModal;
+export default CreateEditModal;
+

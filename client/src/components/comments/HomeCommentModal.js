@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Modal, Button } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-import NetworkUserpost from "../network/networkUserPost"
+import HomeUserComment from '../comments/HomeUserComment'
 
-function NetworkpostModal(props) {
+
+function HomeCommentModal (props) {
   return (
     <Modal show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
@@ -17,20 +18,19 @@ function NetworkpostModal(props) {
             >
               <Form.Label>  </Form.Label>
 
-            <NetworkUserpost userID ={props.userID}/>
+            <HomeUserComment postID ={props.postID}/>
+     
             
             </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>
-        Back to Network Page
+        Back to Home Page
         </Button>
       </Modal.Footer>
     </Modal>
   );
 }
 
-export default NetworkpostModal;
-
-   
+export default HomeCommentModal;

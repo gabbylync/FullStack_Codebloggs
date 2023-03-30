@@ -6,31 +6,46 @@ const commentCreate = async (req, res) => {
     res.status(201).json({ msg: "Comment Created", data: comment });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: err });
+    res.status(500).json({ msg: "ERROR with backend: Comment NOT created" });
   }
 };
 
 const commentById = async (req, res) => {
   try {
-    const commentId = await Comment.findOne({ comment: req.query._id });
-    res.send(commentId);
-    console.log(commentId);
+    const { id: commentID } = req.params
+    const Idcomment = await Comment.findById({ _id: commentID});
+    res.status(200).send({msg: 'Comment Requested', data: Idcomment })
+    // res.send(commentId);
+    // console.log(commentId);
   } catch (error) {
-    res.status(500).json({ error: err });
+    res.status(500).json({  msg: "ERROR with backend: comment not found"  });
   }
 };
 
 const commentByUserId = async (req, res) => {
   try {
-    const comments = await Comment.find({ user: req.params.id }).select(
-      "content"
-    );
-    console.log(comments);
-    res.send(comments);
+    console.log("id" , req.params.id)
+    // const comments = await Comment.find({ user: req.params.id }).select( "content");
+    const comments = await Comment.find({ user: req.params.id }).sort({date: -1});
+    res.status(200).send(comments);
   } catch (error) {
-    res.status(500).json({ error: err });
+    res.status(500).json({  msg: "ERROR with backend:comment by User ID not found" });
   }
 };
+
+const commentByPostId = async (req, res) => {
+  try {
+    console.log("id" , req.params.id)
+    // const comments = await Comment.find({ user: req.params.id }).select( "content");
+    const comments = await Comment.find({ post: req.params.id }).sort({date: -1});
+    res.status(200).send(comments);
+  } catch (error) {
+    res.status(500).json({  msg: "ERROR with backend:comment by User ID not found" });
+  }
+};
+
+
+
 
 const commentUpdate = async (req, res) => {
   try {
@@ -87,4 +102,5 @@ module.exports = {
   commentDelete,
   commentByUserId,
   commentLike,
+  commentByPostId
 };

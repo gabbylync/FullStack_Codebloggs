@@ -3,24 +3,27 @@ const mongoose = require('mongoose')
 const CommentSchema = new mongoose.Schema({
   content: {
     type: String,
-    trim: true,
-    // required: true
+    // trim: true,
+    required: true
     
   },
   post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post",
-    // required: true
+    required: true
     
   },
 
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    // required: true
+    required: true
+
   },
   likes: {
     type: Number, 
+    min: 0,
+    default: 0,
     // required: true,
    
 

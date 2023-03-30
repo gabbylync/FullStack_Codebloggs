@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import NetworkpostModal from "./NetworkpostModal";
 import { Button } from "react-bootstrap";
+import HomeCommentModal from "./HomeCommentModal";
+import "../styles/home.css"
 
-function CreatepostModal(props) {
+function CreateHomeCommentmodal (props) {
   const [showModal, setShowModal] = useState(false);
 
-  const handleEdit = () => {
+  const handleCreateComment = () => {
     setShowModal(true);
   };
 
@@ -20,18 +21,18 @@ function CreatepostModal(props) {
   };
 
   return (
-    <div>
+    <div className = "homecommentButton">
         <br/>
-      <Button className = "networkButton" variant = "secondary" onClick={handleEdit}> Click here to see my latest post! </Button>
-      <NetworkpostModal
-      userID ={props.userID}
+      <Button variant = "secondary" onClick={handleCreateComment}> Comments are just a "click" away </Button>
+      <HomeCommentModal
+      postID ={props.postID}
         show={showModal}
         handleClose={handleClose}
-        title="Posts 4 dayz!"
+        title="My Comments!"
         handleSave={handleSave}
       />
     </div>
   );
 }
 
-export default CreatepostModal;
+export default CreateHomeCommentmodal;

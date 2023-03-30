@@ -1,7 +1,8 @@
-/* .container{
-  justify-content: right;
-   
-} */
+/* /////////////////////////////////////////////////////////// */
+ /* If you are lookign for .firstname and .firstname2 they are 
+               /*  on the login.css page  */
+/* ////////////////////////////////////////////////////////// */
+
 
 /* .myposts{
   width: 220px;
@@ -11,20 +12,23 @@
 .homecard {
     width: 600px;
     /* margin: 65px 40px 70px 20px; */
-    margin: 65px 40px 70px 20px;
+    margin: 65px 40px 70px 390px;
     color: white;
  
 }
 
 .initals {
     text-align: center;
-    font-size: 40px;
+    /* margin: 0px 40px 70px 130px; */
+    font-size: 80px;
     font-family: "Brush Script MT"
 
 }
 
 .status {
     text-align: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
 }
 
 /* .commentlist{
@@ -42,8 +46,18 @@
 .posts2{
     color: rgb(255, 255, 255);
     text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+
 }
 
 .postdate{
     color: rgb(255, 255, 255);
+}
+
+.homecommentButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }

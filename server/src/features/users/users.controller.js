@@ -114,8 +114,7 @@ const userUpdate = async (req, res) => {
   try {
     // const allowed = filterUpdates(req.body);
 
-    const user = await User.findByIdAndUpdate(
-      { _id: req.params.id },
+    const user = await User.findByIdAndUpdate({ _id: req.params.id },
       req.body,
       {
         new: true,
@@ -123,7 +122,7 @@ const userUpdate = async (req, res) => {
       }
     );
     if (user) {
-      res.status(200).json({ data: user });
+      res.status(200).json({ msg: "User Successfully Updated ", data: user });
     } else {
       res
         .status(404)
@@ -147,6 +146,21 @@ const getEmail = async(req, res) => {
   }
 }
 
+///////////////////////////////////
+//   DELETE: /user-delete/:id  ////
+///////////////////////////////////
+
+const userDelete = async(req, res) => {
+  try{
+      const userDel = await User.findByIdAndDelete(req.params.id)
+  res.status(200).send({msg: 'Agent Deleted', data: userDel})
+} catch (error){  
+  res.status(404).json({msg:'ERROR: Agent not deleted due to improper request or because multiple agents were returned'})   
+  console.log(error)
+}
+
+};
+
 
 module.exports = {
   userRegister,
@@ -155,5 +169,6 @@ module.exports = {
   returnUsers,
   userUpdate,
   validateTokenEndpoint,
-  getEmail
+  getEmail,
+  userDelete
 };

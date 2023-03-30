@@ -2,6 +2,10 @@
 
 const mongoose = require('mongoose')
 
+// const date = require('date-and-time')
+// const value = date.format((new Date()),'YYYY/MM/DD HH:mm:ss');
+
+
 const PostSchema = new mongoose.Schema({
   content: {
     type: String,
@@ -18,7 +22,7 @@ const PostSchema = new mongoose.Schema({
   likes: {
     type: Number, 
     min: 0,
-    default: 0,
+    default: 0
     // required: true,
    
   },
@@ -29,6 +33,7 @@ const PostSchema = new mongoose.Schema({
   },
 
 date:{
+  
   type: Date,
   default: Date.now
 }

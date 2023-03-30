@@ -99,6 +99,8 @@
 }
 
 /* Network Page CSS */
+
+
 .networkInitals {
   text-align: center;
   font-size: 40px;
@@ -132,8 +134,8 @@
 
 .postContent{
   font-size: 30px;
-  font-variant: small-caps;
   color:rgb(119, 36, 197);
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Bloggs page */

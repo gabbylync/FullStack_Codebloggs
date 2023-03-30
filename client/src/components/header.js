@@ -16,6 +16,9 @@ import '../App.css'
 
 export default function Header() {
   
+
+///////////////////////////////////////////////
+
   const [email, setEmail] = useState()
   useEffect(() => {
   async function getEmail() {
@@ -32,7 +35,6 @@ export default function Header() {
 
   return;
  }, [])
-
 
 
   const navigate = useNavigate();
@@ -54,6 +56,7 @@ export default function Header() {
     });
 
   const token = (getCookie('token'));
+  ////////////////////////////////////////////////////////////////////////////
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
@@ -77,8 +80,9 @@ export default function Header() {
             <span className="navbar-toggler-icon"> </span>
           </button>
           <h1 className = "header"> CodeBloggs </h1>
-         {/* insert CodeBloggs header in h1 above w/ cool font */}
+     
         <CreatepostModal />
+
           <NavDropdown title="Menu" id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3" onClick={handleToastClick}>
               Account Settings

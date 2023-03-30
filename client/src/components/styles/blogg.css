@@ -6,10 +6,19 @@
 }
 
 .blogText{
-    color: white
+    color: rgb(250, 250, 250);
+    font-size: 25px;
+    /* font-weight: bold; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-variant: small-caps; */
+
 }
 .text-muted{
     margin: 0px 40px 100px 10px;
     position: absolute;
     bottom: -70px;
+}
+
+.bloggscommentButton{
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

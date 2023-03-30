@@ -6,7 +6,7 @@ const postCreate = async (req, res) => {
     res.status(201).json({ msg: "Post Created", data: post });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ msg: "error" });
+    res.status(500).json({ msg: "ERROR from backend: can't create post" });
   }
 };
 //// Get: /allPosts /////////
@@ -40,8 +40,26 @@ const getPostById = async (req, res) => {
 const postByUserId = async (req, res) => {
   try {
     console.log("id" , req.params.id)
-    // const posts = await Post.find({ user: req.params.id }).select("content").sort({date: -1});
-    const posts = await Post.find({ user: req.params.id }).sort({date: -1});
+    // const posts = await Post.find({ user: req.params.id }).select("content").sort({date: -1}); 
+      
+                                                                         // $natural is the same thing as saying 
+                                                                         // .sort ({date: -1}). It is just less
+                                                                         // complicated for the computer output the 
+                                                                         // info this way 
+    const posts = await Post.find({ user: req.params.id }).limit(1).sort({$natural: -1});
+    console.log(posts);
+    res.status(200).send(posts);
+  } catch (error) {
+    res.status(500).json({ msg: "Error getting user by ID"});
+  }
+};
+
+/// this one is differnet from the one above because it doesn't have a limiter, 
+/// it will show all posts instead of limiting to the most recent 
+const postUserId = async (req, res) => {
+  try {
+    console.log("id" , req.params.id)
+    const posts = await Post.find({ user: req.params.id }).sort({$natural: -1});
     console.log(posts);
     res.status(200).send(posts);
   } catch (error) {
@@ -103,6 +121,7 @@ module.exports = {
   postCreate,
   getPostById,
   postByUserId,
+  postUserId,
   postUpdate,
   postDelete,
   postLike,
