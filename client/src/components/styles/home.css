@@ -3,10 +3,6 @@
                /*  on the login.css page  */
 /* ////////////////////////////////////////////////////////// */
 
-/* .container{
-  justify-content: right;
-   
-} */
 
 /* .myposts{
   width: 220px;
@@ -16,20 +12,23 @@
 .homecard {
     width: 600px;
     /* margin: 65px 40px 70px 20px; */
-    margin: 65px 40px 70px 20px;
+    margin: 65px 40px 70px 390px;
     color: white;
  
 }
 
 .initals {
     text-align: center;
-    font-size: 40px;
+    /* margin: 0px 40px 70px 130px; */
+    font-size: 80px;
     font-family: "Brush Script MT"
 
 }
 
 .status {
     text-align: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
 }
 
 /* .commentlist{

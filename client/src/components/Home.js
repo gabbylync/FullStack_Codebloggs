@@ -73,7 +73,7 @@ export default function Home() {
   }   
     getHomeUser();
 
-    ///// getting posts from user that is logged in /////
+
 
     
   }, []);
@@ -83,7 +83,7 @@ export default function Home() {
   async function userPostsbyUserID(id) {
     console.log("id" , id)
     const response = await fetch(
-      `http://localhost:3004/post-by-user/${id}`
+      `http://localhost:3004/allposts-by-user/${id}`
     );
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
@@ -107,9 +107,9 @@ export default function Home() {
   //////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>
-    {/* <div className= "container2"> */}
+    {/* <div className= "container"> */}
       <MDBRow className="row-cols-1 row-cols-md-2 g-4">
-        <MDBCol>
+        {/* <MDBCol> */}
           <MDBCard className="homecard" background="dark">
             <MDBCardImage
               src="https://www.businessleader.co.uk/wp-content/uploads/2021/08/Institute-of-Coding-1024x576.jpg"
@@ -117,9 +117,12 @@ export default function Home() {
               position="top"
             />
             <MDBCardBody>
-              <MDBCardTitle className="initals">  {initals(homeUser?.first_name + " " + homeUser?.last_name)}  </MDBCardTitle>
+              <MDBCardTitle className="initals">  ~ {initals(homeUser?.first_name + " " + homeUser?.last_name)} ~ </MDBCardTitle>
               {/* {initals(homeUser ? homeUser.first_name : null + " " + homeUser ? homeUser.last_name : null)} */}
-              <MDBCardText className="status"></MDBCardText>
+              <MDBCardText className="status">  Status: 
+              {" "}
+                {homeUser ? homeUser.status : null}{" "}
+              </MDBCardText>
             </MDBCardBody>
             <MDBListGroup>
               <MDBListGroupItem className="firstname">
@@ -148,16 +151,15 @@ export default function Home() {
               </MDBListGroupItem>
             </MDBListGroup>
           </MDBCard>
-        </MDBCol>
+        {/* </MDBCol> */}
      
 
         {posts
           ? posts.map((post) => {
               return (
-                
-            
+              
                   <MDBCol key={post._id}>
-                    <MDBCard background="dark" className="myposts">
+                    <MDBCard background="dark" className="myposts" >
                       <MDBCardBody>
                         <MDBCardTitle className="posts"> My posts </MDBCardTitle>
                       <br/>
@@ -179,7 +181,7 @@ export default function Home() {
                    
                     </MDBCard>
                   </MDBCol>
-                
+               
               );
             })
           : null}

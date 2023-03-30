@@ -54,6 +54,19 @@ const postByUserId = async (req, res) => {
   }
 };
 
+/// this one is differnet from the one above because it doesn't have a limiter, 
+/// it will show all posts instead of limiting to the most recent 
+const postUserId = async (req, res) => {
+  try {
+    console.log("id" , req.params.id)
+    const posts = await Post.find({ user: req.params.id }).sort({$natural: -1});
+    console.log(posts);
+    res.status(200).send(posts);
+  } catch (error) {
+    res.status(500).json({ msg: "Error getting user by ID"});
+  }
+};
+
 const postUpdate = async (req, res) => {
   try {
     // const allowed = filterUpdates(req.body);
@@ -108,6 +121,7 @@ module.exports = {
   postCreate,
   getPostById,
   postByUserId,
+  postUserId,
   postUpdate,
   postDelete,
   postLike,
