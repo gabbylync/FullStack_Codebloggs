@@ -1,0 +1,41 @@
+
+.admincard{
+    background-color: rgb(255, 254, 255);
+ 
+}
+
+.userManagetext{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-variant: small-caps;
+    font-size: 55px ;
+    
+}
+
+
+.usermanagement {
+    width: 700px;
+    margin: 65px 40px 100px 390px;
+}
+
+
+.usermanagementText{
+    /* width: 900px; */
+    font-size: 89px;
+    font-variant: small-caps;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    margin: 190px 40px 100px 410px;
+    text-shadow: 1px 1px 2px rgb(253, 253, 253), 0 0 25px rgb(238, 236, 240), 0 0 5px rgb(255, 255, 255);
+}
+
+.usermanagement2{
+    width: 700px;
+    margin: 0px 40px 100px 390px;
+}
+.usermanagementText2{
+    /* width: 900px; */
+    font-size: 80px;
+    font-variant: small-caps;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    margin: 140px 40px 100px 390px;
+    text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255);
+}

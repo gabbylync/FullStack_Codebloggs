@@ -1,0 +1,81 @@
+
+
+.gradient-custom-2 {
+    background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
+    /* padding: 10px; */
+  }
+
+.gradient-custom-3{
+  background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
+  /* padding: 10px; */
+}
+  
+  
+  /* .loginleft{
+    margin: 400px 10px 100px 20px;
+  } */
+
+  .codeblogger{
+    font-family: Verdana, Tahoma, sans-serif;
+    font-weight: bold;
+    font-variant: small-caps;
+    
+  }
+
+  .codebloggs2{
+    font-family: Verdana, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    margin-top: 0px;
+    font-variant: small-caps;
+    text-shadow: 1px 1px 2px rgb(11, 5, 20), 0 0 25px rgb(24, 3, 58), 0 0 5px rgb(42, 6, 74);
+  }
+
+  .codebloggs3{
+    font-family: Verdana, Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 0px;
+    font-variant: small-caps;
+    text-shadow: 1px 1px 2px rgb(11, 5, 20), 0 0 25px rgb(24, 3, 58), 0 0 5px rgb(42, 6, 74);
+  }
+
+ .loginform{
+  margin: 200px 50px 320px 20px;
+ }
+
+ .logintext{
+  font-variant: small-caps;
+  text-align: center;
+ }
+
+ .email{
+  font-variant: small-caps;
+ }
+
+/* these are sectioned off because they belong to the home page
+they wouldn't change color on home.css for some reason*/
+.firstname{
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  font-variant: small-caps;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.firstname2{
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7544b1, #a47dd4, #5911b0, #37016d);
+  text-align: center;
+  font-size: 15px;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+}
+.commentlist{
+  text-align: center;
+  color: white;
+  background: linear-gradient(to right, #7544b1, #5911b0, #9570c2, #37016d);
+}
+/* //////////////////////////////////////////////////////////////////////// */
