@@ -58,3 +58,17 @@
   .centerForm{
     margin: -100px 0px 0px 520px;
   }
+
+  /*createDeleteModal page CSS */
+
+  .deleteButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* .editButton{
+    margin: 1px 0px 5px 10px;
+    /* text-align: center; */
+    /* position: fixed; */
+  /* } */

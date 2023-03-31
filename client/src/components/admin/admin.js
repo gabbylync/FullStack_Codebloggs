@@ -1,6 +1,6 @@
 import "../../App.css";
 import React from "react";
-import Card from "react-bootstrap/Card";
+// import Card from "react-bootstrap/Card";
 import "../styles/admin.css"
 import {getCookie} from "react-use-cookie";
 import { useNavigate } from "react-router-dom";

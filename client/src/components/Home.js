@@ -14,14 +14,9 @@ import LikeButtonHome from "././LikeButtonHome";
 import { getCookie } from "react-use-cookie";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/App.css";
-import "/Users/shootermcgabbin/Codeboxx/FullStack_Codebloggs/client/src/components/styles/home.css";
 import CreateHomeCommentmodal from "./comments/CreateHomeCommentmodal";
-=======
 import "../App.css";
 import "../components/styles/home.css";
->>>>>>> eb592f266229904c5ff1efbebee35d3b94308057
 
 
 export default function Home() {
