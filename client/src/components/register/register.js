@@ -117,9 +117,9 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    let res
     try {
-      const res = await fetch("http://localhost:3004/register", {
+      res = await fetch("http://localhost:3004/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -135,51 +135,18 @@ function Register() {
           birthday: values.birthday,
           auth_level: "basic",
         }),
-      });
+      })
 
       if (!res.ok) {
-        const error = await res.json();
-
-        console.log(error.error);
-
-        // console.log("error", error.error );
-
+        const error = await res.json()
         setErrors({
           ...errors,
           fetchError: true,
           fetchErrorMsg: error.msg,
         });
-
-        if (error.error === "Add all data") {
-          toast.error("Error: Must add all data flieds", {
-            position: toast.POSITION.TOP_CENTER,
-            theme: "dark",
-            autoClose: 5000,
-            onClose: () => {
-              navigate("/");
-            },
-          });
-        }
-        if (error.error === "user already exist") {
-          toast.error("Error: User already exsists", {
-            position: toast.POSITION.TOP_CENTER,
-            theme: "dark",
-            autoClose: 5000,
-            onClose: () => {
-              navigate("/");
-            },
-          });
-        }
       }
-
-      // console.log(data);
-      ////////////////////////////
-      /////Toasters/////
-      ///////////////////////
-
-      // toast.configure()
-
-      ////////////////////////////////////////////////////////
+      //  const data = await res.json()
+      
       setErrors({
         ...errors,
         fetchError: true,
@@ -205,8 +172,45 @@ function Register() {
           "There was a problem with our server, please try again later",
       });
     }
-   
-    navigate("/");
+
+ if (res.ok) {
+          console.log("first if statement hit" )
+          toast.success("thank god", {
+            position: toast.POSITION.TOP_CENTER,
+            theme: "dark",
+            autoClose: 5000,
+            onClose: () => {
+              navigate("/")
+             console.log("hi");
+            },
+          });
+        }
+
+        // if (res.msg === "add all data fields") {
+        if (res.status === 404) {
+      console.log("first if statement hit" )
+      toast.error("Error: Must add all data flieds", {
+        position: toast.POSITION.TOP_CENTER,
+        theme: "dark",
+        autoClose: 5000,
+        onClose: () => {
+          navigate("/register")
+         console.log("hi");
+        },
+      });
+    }
+    // if (res.error === "user already exist") {
+    //   toast.error("Error: User already exsists", {
+    //     position: toast.POSITION.TOP_CENTER,
+    //     theme: "dark",
+    //     autoClose: 5000,
+    //     onClose: () => {
+    //       navigate("/register")
+    //     console.log("register");
+    //     },
+    //   });
+    // }
+    
   };
 
   const handleDateChange = (date) => {
@@ -356,7 +360,9 @@ function Register() {
                 
                 <MDBInput
                   type="date"
+                  format = "yyyy/mm/dd"
                   value={values.birthday}
+                  // data-mdb-inline="true"
                   onChange={(event) => handleChange("birthday")(event)}
                 />
                 

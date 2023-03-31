@@ -15,13 +15,13 @@ const userRegister = async (req, res) => {
     occupation,
     auth_level,
   } = req.body;
-  if(!occupation ||!location ||!status || !email || !password || !last_name || !first_name )
+  if(!auth_level  || !occupation ||!location ||!status || !email || !password || !birthday || !last_name || !first_name )
     {
-        return res.status(422).json({error:"Add all data"})
+        return res.status(404).json({error:"Add all data"})
     }
   User.findOne({ email: email }, (err, user) => {
     if (user) {
-      res.send({ message: "user already exist" });
+      res.send({ msg: "user already exist" });
     } else {
       const user = new User({
         first_name,
@@ -36,9 +36,9 @@ const userRegister = async (req, res) => {
       });
       user.save((err) => {
         if (err) {
-          res.send({ error: err });
+          res.send({ msg: "add all data fields" });
         } else {
-          res.send({ message: "sucessfull", user: user._id });
+          res.send({ msg: "sucessfull", user: user._id });
         }
       });
     }

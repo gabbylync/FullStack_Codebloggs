@@ -41,8 +41,9 @@ export default function Header() {
   const [isLoggedIn, setisLoggedIn] = useState();
 
   const logOut = () => {
-    navigate("/");
+    // navigate("/");
       setCookie('token', '0')
+      navigate("/");
     setisLoggedIn(false);
   };
   const handleToastClick = () =>

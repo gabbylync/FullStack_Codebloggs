@@ -26,6 +26,7 @@ export default function Navbars() {
  // const navigate = useNavigate();
 // const [posts, setPosts] = useState();
 const [userAuth, setUserAuth] = useState();
+// const navigate = useNavigate();
 /////////////////////////////////////////
 /// getting token validated on this page ////
 const token = getCookie('token');
@@ -77,7 +78,8 @@ useEffect(() => {
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
             <NavLink to="/home" className="activeClicked">
-              <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
+              Home
+              {/* <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem> */}
             </NavLink>
             <NavLink to="/bloggs" className="activeClicked">
               <CDBSidebarMenuItem icon="table">Bloggs</CDBSidebarMenuItem>
@@ -85,6 +87,7 @@ useEffect(() => {
             <NavLink to="/network" className="activeClicked">
               <CDBSidebarMenuItem icon="user">Network</CDBSidebarMenuItem>
             </NavLink>
+
            {userAuth === 'admin' ?
             <NavLink to="/admin" className= 'activeClicked' >
             

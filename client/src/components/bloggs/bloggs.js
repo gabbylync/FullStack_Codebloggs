@@ -23,12 +23,12 @@ import {
 export default function Bloggs() {
 
   const navigate = useNavigate();
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState();
   /////////////////////////////////////////
   /// getting token validated on this page ////
   const token = getCookie('token');
-  console.log('true' , token);
+  // console.log('true' , token);
 
   useEffect(() => {
     async function getValidation() {
@@ -51,6 +51,23 @@ export default function Bloggs() {
       }
     }
 
+    getallPosts();
+
+  async function getUsers() {
+    const response = await fetch(`http://localhost:3004/all-users`);
+    if (!response.ok) {
+      const message = `An error occurred: ${response.statusText}`;
+      window.alert(message);
+      return;
+    }
+
+    let data = await response.json();
+    setUsers(data);
+    // console.log("users:", data.date);
+  }
+
+  getUsers();
+
     getValidation();
   }, []);
 
@@ -65,38 +82,39 @@ export default function Bloggs() {
     }
 
     let data = await response.json();
+    console.log('data >>>',data)
     setPosts(data.data);
-    console.log("posts:", data?.data.date);
-    console.log("look here" , data.data)
-    console.log("no look here , ")
+    // console.log("posts:", data?.data.date);
+    // console.log("look here" , data.data)
+    // console.log("no look here , ")
   }
 
   console.log('this is post var')
-  console.log(posts)
+  console.log('all pooops: ', posts)
 ///////////////////////////////////////
-useEffect(() => {
+// useEffect(() => {
 
 
-  getallPosts();
+  // getallPosts();
 
-  async function getUsers() {
-    const response = await fetch(`http://localhost:3004/all-users`);
-    if (!response.ok) {
-      const message = `An error occurred: ${response.statusText}`;
-      window.alert(message);
-      return;
-    }
+  // async function getUsers() {
+  //   const response = await fetch(`http://localhost:3004/all-users`);
+  //   if (!response.ok) {
+  //     const message = `An error occurred: ${response.statusText}`;
+  //     window.alert(message);
+  //     return;
+  //   }
 
-    let data = await response.json();
-    setUsers(data);
-    console.log("users:", data.date);
-  }
+  //   let data = await response.json();
+  //   setUsers(data);
+  //   // console.log("users:", data.date);
+  // }
 
-  getUsers();
+  // getUsers();
 
 //////////////////////////////////////
-  return;
-}, []);
+//   return;
+// }, []);
 
 function initals (name){
  let result = name.split(" ").map((n)=>n[0]).join("")
@@ -113,13 +131,13 @@ function photos(arr){
    return photo;
 
 }
-
   return (
     <>
     {posts
    ? posts.map((post)=>{
+    console.log("post..." , post)
     return(
-    
+   
       <MDBRow key = {post._id} className="row-cols-1 row-cols-md-3 g-4">
       <MDBCard className="cardBloggs w-50" background='dark'>
         <MDBRow className="g-0">
@@ -134,15 +152,14 @@ function photos(arr){
           <MDBCol md="8">
             <MDBCardBody>
               {/* <MDBCardTitle className = "blogInitals"> GC </MDBCardTitle> */}
+              {/* <MDBCardTitle className = "blogInitals"> {post.user} </MDBCardTitle> */}
               <MDBCardTitle className = "blogInitals"> {initals(post.user.first_name + " " + post.user.last_name)} </MDBCardTitle>
               <MDBCardText className="blogText"> 
                {post.content}
               </MDBCardText>
+
               < CreatebloggsModal postID={post._id}/>
-              
-              {/* <MDBCardText className="blogText">
-            Comment List 
-              </MDBCardText> */}
+
               <MDBCardText>
                 <small className="text-muted">{post.date}</small>
               </MDBCardText>
