@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "../styles/userManage.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import CreateDeleteModal from "../modals/CreateDeleteModal";
+import { MDBDataTable } from 'mdbreact';
 
 const User = (props) => (
   <tr>
@@ -13,11 +15,11 @@ const User = (props) => (
 
     <td>
        <Link className="" to={`/edit/${props.users._id}`}> 
-             <Button variant="secondary"> Edit</Button>
+             <Button className="editButton" variant="secondary"> Edit</Button>
             </Link>{" "} 
        <br /> 
 
-      {/* <MyComponent onDelete={props.deleteAgents}/>  */}
+      <CreateDeleteModal onDelete={props.deleteUser}/> 
     </td>
   </tr>
 );
@@ -25,6 +27,8 @@ const User = (props) => (
 export default function UserManagement() {
 const [users, setUsers] = useState();
   const navigate = useNavigate();
+
+  
   /////////////////////////////////////////
   /// getting token validated 1st  ////
   ///////////////////////////////////////////
@@ -70,6 +74,12 @@ const [users, setUsers] = useState();
       getUsers();
      
   }, []);
+
+  const sortMethods = {
+    none: { method: (a, b) => null },
+    ascending: { method: undefined },
+    descending: { method: (a, b) => (a > b ? -1 : 1) },
+  };
 
       /////////////////////////////////////////
     // DELETE: This method will delete a agent ////////
@@ -118,6 +128,8 @@ const [users, setUsers] = useState();
         <Button  variant="secondary"> Create User Here </Button>
         </div>
       </Link> */}
+   
+    
 
          <div className="centerPage">
       <Table striped bordered hover variant="dark" className="userTable">

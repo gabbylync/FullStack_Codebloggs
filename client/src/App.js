@@ -14,6 +14,7 @@ import Admin from "./components/admin/admin"
 import Login from "./components/login/login"
 import UserManagement from "./components/admin/userManagement";
 import Edit from "./components/admin/editUser";
+import ContentManagement from "./components/admin/userContentManagement";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
     
      <Route path="/admin" element={<Admin />} />
      <Route path="/userManagement" element={<UserManagement />} />
+     <Route path="/userContent" element={<ContentManagement />} />
      <Route path="/edit/:id" element={<Edit />} />
 
      </Routes>
