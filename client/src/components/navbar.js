@@ -7,9 +7,11 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import {getCookie} from "react-use-cookie";
+import SidebarMenu from 'react-bootstrap-sidebar-menu';
 
 import { useLocation } from "react-router-dom";
-import "../components/styles/navbar.css";
+import "../components/styles/navbar.css"
+
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -19,13 +21,11 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 
-
-
-
 export default function Navbars() {
  // const navigate = useNavigate();
 // const [posts, setPosts] = useState();
 const [userAuth, setUserAuth] = useState();
+
 // const navigate = useNavigate();
 /////////////////////////////////////////
 /// getting token validated on this page ////
@@ -40,7 +40,9 @@ useEffect(() => {
     );
     const res = await response.json();
     setUserAuth(res.data.user.auth_level)
+    // setEmail(res.data.user.email) 
     console.log(res.data, "testing")
+  
 
     if (res.msg === "No tokens are found" || token === undefined)
      {
@@ -54,64 +56,62 @@ useEffect(() => {
       return;
     }
   }
+ 
 
   getValidation();
 }, []);
+
+const [bgcolor, setBgcolor] = useState('black');
+  const [textcolor, setTextcolor] = useState('white'); 
+
+
+  function handleHighlightTab() {
+      setBgcolor('white');
+      setTextcolor('black');
+  } 
+
+
+
   return (
-    <div
-    // style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
-    >
-      <CDBSidebar
-        className="navigation"
-        backgroundColor="#9575CD"
-        style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
-      >
-        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <img
-            src={
-              "https://i.ibb.co/dLBWqJG/codebloggs-logo2-removebg-preview.png"
-            }
-            alt=""
-            style={{ width: 70 + "%" }}
-          />
-        </CDBSidebarHeader>
-        <CDBSidebarContent className="sidebar-content">
-          <CDBSidebarMenu>
-            <NavLink to="/home" className="activeClicked">
-              Home
-              {/* <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem> */}
-            </NavLink>
-            <NavLink to="/bloggs" className="activeClicked">
-              <CDBSidebarMenuItem icon="table">Bloggs</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink to="/network" className="activeClicked">
-              <CDBSidebarMenuItem icon="user">Network</CDBSidebarMenuItem>
-            </NavLink>
 
-           {userAuth === 'admin' ?
-            <NavLink to="/admin" className= 'activeClicked' >
-            
-             <CDBSidebarMenuItem icon="user">Admin</CDBSidebarMenuItem>
-             </NavLink>
-             : <NavLink></NavLink>
-          }
-             
-          </CDBSidebarMenu>
-        </CDBSidebarContent>
+    <body>
+<div class="sidebar">
+<NavLink className="navbar-brand" to="/home">
+<img
+    src={
+      "https://i.ibb.co/dLBWqJG/codebloggs-logo2-removebg-preview.png"
+    }
+    alt=""
+    style={{ width: 90 + "%" }}
+  />
+    </NavLink>
+    <br/>
+    <br/>
+    <br/>
+    <NavLink to="/home"  >
+    {/* onClick={handleHighlightTab} style={{backgroundColor:`${bgcolor}`,color:`${textcolor}` }}  */}
+  <a ><i className="fa fa-fw fa-home sidebarz"></i> Home</a>
+  </NavLink>
+  <br/>
+  <NavLink to="/bloggs" className="activeClicked">
+  <a href="#services"><i className="fa fa-fw fa-file sidebarz"></i> Bloggs</a>
+  </NavLink>
+  <br/>
+   <NavLink to="/network" className="activeClicked">
+  <a href="#clients"><i className="fa fa-fw fa-smile sidebarz"></i> Network</a>
+  </NavLink>
+  <br/>
+  {userAuth === 'admin' ?
+    <NavLink to="/admin"  className= 'activeClicked' >
+    <a href="#contact"><i className="fa fa-fw fa-address-card sidebarz"></i> Admin</a>
+     </NavLink>
+     : <NavLink></NavLink>
+  }
 
-        <CDBSidebarFooter style={{ textAlign: "center" }}>
-          <div
-            className="sidebar-btn-wrapper"
-            style={{
-              padding: "20px 5px",
-            }}
-          >
-            Codebloggs ™
-          </div>
-        </CDBSidebarFooter>
-      </CDBSidebar>
-    </div>
+</div>
+</body>
+ 
+
   );
 }
 
-//   {token == 0 ? " " : email}

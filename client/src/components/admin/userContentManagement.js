@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import CreatePostDelete from "./CreatePostDelete";
 import Table from "react-bootstrap/Table";
+import { MDBPagination, MDBPaginationItem, MDBPaginationLink } from 'mdb-react-ui-kit';
 
 export default function ContentManagement() {
   const [users, setUsers] = useState();
@@ -130,9 +131,40 @@ export default function ContentManagement() {
   return (
     <>
       <br /> <br />
+     
       <h1 className="userlist" style={{ textAlign: "center" }}>
         <span>All Users Bloggs </span>
       </h1>
+      <Button     className="back"
+                  onClick={() => {
+                    navigate("/admin");
+                  }}
+                  type="submit"
+                  variant="dark"
+                >
+                  Back to Admin
+                </Button>
+      <br/> <br/>
+      <nav aria-label='Search results pages'>
+      <MDBPagination >
+        <MDBPaginationItem className = "pagination">
+          <MDBPaginationLink className ="pagText" href='#'>Previous</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>1</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>2</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>3</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>Next</MDBPaginationLink>
+        </MDBPaginationItem>
+      </MDBPagination>
+    </nav>
+    <br/> 
       <div className="centerPage">
       <Table striped bordered hover variant="dark" className="userTable">
         <thead>
@@ -144,8 +176,10 @@ export default function ContentManagement() {
         </thead>
         <tbody>{postList()}</tbody>
       </Table>
+     
     </div>
          
     </>
   );
 }
+

@@ -1,3 +1,10 @@
+/* centers the pages from the side nav */
+.mainz {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+  }
+
+
 
 .admincard{
     background-color: rgb(255, 254, 255);

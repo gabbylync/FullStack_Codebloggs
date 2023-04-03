@@ -133,11 +133,12 @@ function photos(arr){
 }
   return (
     <>
+    <div className="mainz">
     {posts
    ? posts.map((post)=>{
     console.log("post..." , post)
     return(
-   
+   <>
       <MDBRow key = {post._id} className="row-cols-1 row-cols-md-3 g-4">
       <MDBCard className="cardBloggs w-50" background='dark'>
         <MDBRow className="g-0">
@@ -169,15 +170,17 @@ function photos(arr){
           </MDBCol>
         </MDBRow>
       </MDBCard>
+    
   </MDBRow>
-
-  
+  <br/>
+  <br/>
+  </>
     )
 
    }) : null
    
 }
-    
+   </div> 
    
 </>
 

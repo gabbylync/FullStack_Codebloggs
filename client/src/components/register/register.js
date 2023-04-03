@@ -175,7 +175,7 @@ function Register() {
 
  if (res.ok) {
           console.log("first if statement hit" )
-          toast.success("thank god", {
+          toast.success("Successfully Registered", {
             position: toast.POSITION.TOP_CENTER,
             theme: "dark",
             autoClose: 5000,
@@ -234,15 +234,16 @@ function Register() {
           style={{
             backgroundImage:
               "url(https://s3.envato.com/files/b6d73684-463e-4397-983b-5bd6b725d482/inline_image_preview.jpg)",
-            height: "1020px",
-            width: "1900px",
+            height: "2020px",
+            width: "2900px",
+            margin: "0px",
           }}
         ></div>
 
         <MDBCard
           className="registerhere"
           style={{
-            marginTop: "-1000px",
+         
             background: "hsla(0, 0%, 100%, 0.8)",
             backdropFilter: "blur(10px)",
           }}
@@ -408,7 +409,7 @@ function Register() {
                 {errors.fetchError && (
                   <FormHelperText error>
                     {errors.fetchErrorMsg}
-                    Must fill in all inputs to register
+                  
                   </FormHelperText>
                 )}
               </MDBCol>

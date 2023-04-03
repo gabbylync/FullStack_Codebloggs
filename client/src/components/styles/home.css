@@ -4,6 +4,12 @@
 /* ////////////////////////////////////////////////////////// */
 
 
+/* centers the pages from the side nav */
+.mainz {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+  }
+
 /* .myposts{
   width: 220px;
   height: 220px;
@@ -12,7 +18,7 @@
 .homecard {
     width: 600px;
     /* margin: 65px 40px 70px 20px; */
-    margin: 65px 40px 70px 390px;
+    margin: 65px 40px 70px 400px;
     color: white;
  
 }

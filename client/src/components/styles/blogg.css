@@ -1,3 +1,11 @@
+
+/* centers the pages from the side nav */
+.mainz {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+  }
+
+
 .blogInitals{
     text-align: right;
     font-size: 40px;

@@ -63,10 +63,10 @@ export default function Header() {
       <Toaster position="top-center" reverseOrder={false} />
       <Navbar>
         <Container>
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/home">
             <img
-              style={{ width: 40 + "%" }}
-              src="https://cdn5.dcbstatic.com/files/c/o/codeboxx_docebosaas_com/userfiles/13037/codebloggs_logo2.png"
+              style={{ width: 10 + "%" }}
+              src= "/CodeBloggs graphic.png"
             ></img>
           </NavLink>
           <button
@@ -81,14 +81,16 @@ export default function Header() {
             <span className="navbar-toggler-icon"> </span>
           </button>
           <h1 className = "header"> CodeBloggs </h1>
-     
+          <p className="nav-item" >{token == 0 ? "" : email}   </p>
+      
         <CreatepostModal />
-
+        {/* <p className="nav-item" >{token == 0 ? "" : email}   </p> */}
+    
           <NavDropdown title="Menu" id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3" onClick={handleToastClick}>
               Account Settings
             </NavDropdown.Item>
-            <li className="nav-item" >{token == 0 }   </li>
+         
             <NavDropdown.Item href="#action4" onClick={logOut}>
               Logout
             </NavDropdown.Item>

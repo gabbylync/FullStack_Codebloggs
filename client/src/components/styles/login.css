@@ -2,7 +2,8 @@
 
 .gradient-custom-2 {
     background: linear-gradient(to right, #a55efc, #b88af0, #6b13d6, #4e009c);
-    /* padding: 10px; */
+    height: 100%
+
   }
 
 .gradient-custom-3{
@@ -53,6 +54,12 @@
  .email{
   font-variant: small-caps;
  }
+
+ /* centers the pages from the side nav */
+ .main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
 
 /* these are sectioned off because they belong to the home page
 they wouldn't change color on home.css for some reason*/
