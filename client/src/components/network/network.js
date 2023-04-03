@@ -80,10 +80,14 @@ export default function Network() {
   ///////////////////////////////////////
   return (
     <>
+    <div className="mainz">
+      <br/>
+      <h1 style={{textAlign: "center"}} ><span>~~ Your Friends List ~~</span></h1>
+      <br/>
       {users
         ? users.map((user) => {
             return (
-            
+            <>
                 <MDBCard key={user._id} background="dark" className="network">
                   <MDBCardImage
                     src="/codebloggs_logo2.png"
@@ -114,10 +118,13 @@ export default function Network() {
                     
                   </MDBCardBody>
                 </MDBCard>
-              
+                <br/>
+                <br/>
+              </>
             )
           })
         : null}
+        </div>
     </>
   );
 }

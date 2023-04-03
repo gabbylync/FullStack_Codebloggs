@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import CreateDeleteModal from "../modals/CreateDeleteModal";
 import { MDBDataTable } from 'mdbreact';
+import { MDBPagination, MDBPaginationItem, MDBPaginationLink } from 'mdb-react-ui-kit';
+import ReactPaginate from "react-paginate";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const User = (props) => (
   <tr>
@@ -26,8 +30,13 @@ const User = (props) => (
 
 export default function UserManagement() {
 const [users, setUsers] = useState();
+  const [pageNumber, setPageNumber] = useState(0);
+  const [items, setItems] = useState([]);
+  const [sortOrder, setSortOrder] = useState({
+    column: null,
+    order: "none",
+  });
   const navigate = useNavigate();
-
   
   /////////////////////////////////////////
   /// getting token validated 1st  ////
@@ -75,11 +84,7 @@ const [users, setUsers] = useState();
      
   }, []);
 
-  const sortMethods = {
-    none: { method: (a, b) => null },
-    ascending: { method: undefined },
-    descending: { method: (a, b) => (a > b ? -1 : 1) },
-  };
+
 
       /////////////////////////////////////////
     // DELETE: This method will delete a agent ////////
@@ -95,6 +100,68 @@ const [users, setUsers] = useState();
   
       // This method will map out the agents on the table
       function userList() {
+    //     let sortedUsers = [...users];
+
+    // if (sortOrder.order !== "none") {
+    //   sortedUsers.sort((a, b) => {
+    //     const columnA = a[sortOrder.column];
+    //     const columnB = b[sortOrder.column];
+
+    //     if (columnA < columnB) {
+    //       return sortOrder.order === "ascending" ? -1 : 1;
+    //     } else if (columnA > columnB) {
+    //       return sortOrder.order === "ascending" ? 1 : -1;
+    //     } else {
+    //       return 0;
+    //     }
+    //   });
+    // }
+
+    // const usersPerPage = 10;
+    // const offset = pageNumber * usersPerPage;
+    // const currentPageUsers = users.slice(offset, offset + usersPerPage);
+  //   return currentPageUsers.map((user) => {
+  //     return (
+  //       <User
+  //         users={user}
+  //         deleteUser={() => deleteUser(user._id)}
+  //         key={user._id}
+  //       />
+  //     );
+  //   });
+  // }
+
+  ///////////Pagination////////////////////
+  // function handlePageChange(selectedPage) {
+  //   setPageNumber(selectedPage.selected);
+  // }
+
+  ///////////Sorting the table/////////////
+  // function handleSort(column) {
+  //   let newOrder = "ascending";
+  // if (sortOrder.column === column && sortOrder.order === "ascending") {
+  //   newOrder = "descending";
+  // }
+//   if (column === "first_name" || column === "last_name") {
+//     const sortedUsers = [...users].sort((a, b) => {
+//       const columnA = a[column].toUpperCase();
+//       const columnB = b[column].toUpperCase();
+
+//       if (columnA < columnB) {
+//         return newOrder === "ascending" ? -1 : 1;
+//       } else if (columnA > columnB) {
+//         return newOrder === "ascending" ? 1 : -1;
+//       } else {
+//         return 0;
+//       }
+//     });
+//     setUsers(sortedUsers);
+//   }
+
+//   setSortOrder({ column, order: newOrder });
+// }
+
+
         return users
           ? users.map((user) => {
               return (
@@ -115,27 +182,43 @@ const [users, setUsers] = useState();
     <br/>
     <br/>
 
-         <h1  className = "userlist" style={{textAlign: "center"}} ><span>User List</span></h1>
-    
-      {/* <Link className="nav-link" to="/create">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Button  variant="secondary"> Create User Here </Button>
-        </div>
-      </Link> */}
-   
-    
-
+         <h1  className = "userlist"  style={{ textAlign: "center" }} ><span>User List</span></h1>
+         <Button     className="back"
+                  onClick={() => {
+                    navigate("/admin");
+                  }}
+                  type="submit"
+                  variant="dark"
+                >
+                  Back to Admin
+                </Button>
+                <br/> <br/>
+      <nav aria-label='Search results pages'>
+      <MDBPagination >
+        <MDBPaginationItem className = "pagination">
+          <MDBPaginationLink className ="pagText" href='#'>Previous</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>1</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>2</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>3</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink className ="pagText" href='#'>Next</MDBPaginationLink>
+        </MDBPaginationItem>
+      </MDBPagination>
+    </nav>
+    <br/> 
          <div className="centerPage">
       <Table striped bordered hover variant="dark" className="userTable">
         <thead>
           <tr>
-            <th className="tableText ">First Name</th>
+            <th 
+            className="tableText ">First Name</th>
             <th className="tableText ">Last Name </th>
             <th className="tableText ">Action</th>
           </tr>

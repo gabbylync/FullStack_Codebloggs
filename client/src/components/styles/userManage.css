@@ -1,10 +1,9 @@
 .centerPage {
     display: flex;
     background-color: rgb(255, 255, 255);
-    margin-left: 20%;
-    /* margin: 20px 50px; */
-    padding: 90px 1px;
-    /* height: auto; */
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 90px 10px;
+
   
   }
 
@@ -72,3 +71,16 @@
     /* text-align: center; */
     /* position: fixed; */
   /* } */
+
+  .pagination{
+   margin: 0px 0px 0px 395px
+  }
+
+  .pagText{
+    color:rgb(212, 181, 233);
+    background-color: rgb(13, 2, 27);
+  }
+  
+  .back{
+    margin: -110px 0px 0px 220px
+  }

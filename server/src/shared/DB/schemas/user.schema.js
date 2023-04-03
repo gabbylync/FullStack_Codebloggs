@@ -20,11 +20,11 @@ const UserSchema = new mongoose.Schema({
 
   birthday: {
     type: Date,
-    validate(val) {
-      if (!validator.isDate(val)) {
-          throw new Error(`Birthdate format is invalid. Format should be 'YYYY/MM/DD'. actual: ${val}`)
-      }
-  },
+//     validate(val) {
+//       if (!validator.isDate(val)) {
+//           throw new Error(`Birthdate format is invalid. Format should be 'YYYY/MM/DD'. actual: ${val}`)
+//       }
+//   },
   },
   email: {
     type: String,

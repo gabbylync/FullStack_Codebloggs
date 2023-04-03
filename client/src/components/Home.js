@@ -107,7 +107,8 @@ export default function Home() {
   //////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>
-    {/* <div className= "container"> */}
+    <div className= "mainz">
+  
       <MDBRow className="row-cols-1 row-cols-md-2 g-4">
         {/* <MDBCol> */}
           <MDBCard className="homecard" background="dark">
@@ -186,7 +187,7 @@ export default function Home() {
             })
           : null}
       </MDBRow>
-      {/* </div> */}
+      </div>
     </>
   );
 }

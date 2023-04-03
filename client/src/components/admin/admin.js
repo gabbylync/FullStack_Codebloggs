@@ -60,8 +60,13 @@ export default function Admin() {
   }, []);
 ///////////////////////////////////////
   return (
+    <div className ="mainz">
     <>
      <Container fluid>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <CardGroup className="m-3 d-block">
         <Card className="m-auto border-5 shadow" style={styles.card}>
           <Row>
@@ -90,6 +95,8 @@ export default function Admin() {
           </Row>
         </Card>
       </CardGroup>
+      <br/>
+      <br/>
       <CardGroup className="m-3 d-block">
         <Card className="m-auto border-5 shadow" style={styles.card}>
           <Row>
@@ -123,6 +130,7 @@ export default function Admin() {
 
    
     </>
+    </div>
   );
 }
 

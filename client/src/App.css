@@ -37,6 +37,8 @@
   }
 }
 
+
+
 .main {
   display: flex;
   background-color: rgb(255, 255, 255);
@@ -65,6 +67,8 @@
   font-size: 20px;
   font-variant: small-caps;
   font-weight: bold;
+  margin: -1900px 250px 0px 250px;
+  backdrop-filter: blur(50px);
 }
 
 
@@ -97,9 +101,15 @@
    border-color: #d9a8ff;
 
 }
-
+/* ////////////////// */
 /* Network Page CSS */
+/* /////////////////// */
 
+/* centers the pages from the side nav */
+.mainz {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
 
 .networkInitals {
   text-align: center;
@@ -159,3 +169,11 @@
           bottom: 0px;
           margin-right: 100px
           }
+
+.navbar-brand{
+  margin-right: 100px
+}
+
+.nav-item{
+  margin-right: 90px
+}
